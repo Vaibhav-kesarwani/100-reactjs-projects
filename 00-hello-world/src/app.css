@@ -1,0 +1,17 @@
+html,
+body {
+  height: 100%;
+  background-color: #111111;
+  margin: 0;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: whitesmoke;
+  font-size: 100px;
+  font-weight: bolder;
+  font-family: monospace;
+}
