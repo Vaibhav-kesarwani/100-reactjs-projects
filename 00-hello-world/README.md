@@ -53,3 +53,4 @@ You can modify the `src/App.js` (or similar main component file) to see your cha
 ---
 
 Feel free to explore the `src` folder to understand the basic file structure of a React application.
+
