@@ -40,7 +40,7 @@ Before you begin, ensure you have the following installed:
     After the dependencies are installed, you can start the development server:
 
     ```bash
-    npm start
+    npm run dev
     ```
     This will typically open the application in your default web browser at `http://localhost:5173/`. If it doesn't open automatically, you can navigate to that URL manually.
 
