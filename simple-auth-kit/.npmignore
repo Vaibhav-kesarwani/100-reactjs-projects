@@ -1,0 +1,7 @@
+# Ignore node_modules and test/dev files
+node_modules
+.env
+*.log
+*.test.js
+example/
+README-template.md

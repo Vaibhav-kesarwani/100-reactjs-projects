@@ -1,0 +1,72 @@
+.ask-question{
+    min-height:90vh;
+    background-color: #f1f2f3;
+    z-index:0;
+}
+
+.ask-ques-container{
+    background-color:#f1f2f3;
+    margin-top:100px;
+    padding: 20px;
+    padding-bottom: 50px;
+    max-width: 1200px;
+    margin-left:-1300px;
+    border-radius: 20px;
+    
+    box-shadow: 0px 5px 5px rgb(0 0 0 /10%),0 20px 30px rgb(0 0 0/5%);
+}
+
+.ask-ques-container h1{
+    font-size: 30px;
+    font-weight: 500;
+    
+}
+
+
+
+.ask-form-container label h4{
+    margin-bottom:0%;
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
+.ask-form-containerl label p{
+    margin:0%;
+    font-size: 13px;
+    padding:3px 0px;
+    font-weight: 300;
+}
+
+.ask-form-container label input ,
+.ask-form-container label textarea{
+    padding:10px;
+    border:solid 1px #0000003e;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-width: 95%;
+    resize: vertical;
+
+}
+
+.botton-btn{
+    margin:50px 0px ;
+    margin-bottom: 10px;
+    background-color: #afafaf;
+    font-size: 15px;
+    font-weight: 300;
+}
+.Submitbutton{
+    margin:20px;
+    padding:10px;
+    color:rgb(0, 0, 0);
+    background-color: #afafaf;
+    transition: .3s;
+    border: none;
+    cursor: pointer;
+    
+}
+.Submitbutton:hover{
+    color:rgb(0, 0, 0);
+    background-color: #7f7f7f;
+    scale:101%;
+}

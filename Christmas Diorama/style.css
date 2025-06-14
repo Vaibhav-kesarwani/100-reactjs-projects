@@ -1,0 +1,38 @@
+/* Copyright (c) 2025 by Ricardo Oliva Alonso (https://codepen.io/ricardoolivaalonso/pen/ZYzXVWJ) */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #8d9c9e;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Inter", sans-serif;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+  z-index: -1;
+}
+
+h1 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  font-weight: 100;
+  color: white;
+}
+
+#loader {
+  display: grid;
+  place-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #b7d4c8ee;
+  backdrop-filter: blur(5px);
+}
