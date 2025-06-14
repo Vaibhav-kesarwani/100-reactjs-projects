@@ -1,0 +1,86 @@
+.main-nav {
+    min-height: 50px;
+    width:100%;
+    margin:0% auto;
+    border-top : solid 3px #ef8236;
+    box-shadow: 0px 1px 10px #00000030  ;
+    position:fixed;
+    z-index: 5;
+    top:0%;
+    left:0%;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+
+.navbar{
+    height:100%;
+    min-width: 85%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-item{
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 350;
+    letter-spacing: .15rem;
+    margin:0px 3px;
+    color: #1a1a1a;
+    transition: .2s;
+}
+.nav-logo{
+    padding-right:30px;
+
+}
+.nav-log{
+    padding:5px 20px;
+}
+
+.nav-links{
+    
+    letter-spacing: 0.1rem;
+    padding:5px 15px;
+    border:solid 1px blue;
+    border-radius: 10px;
+    background-color: #9be4ff30;
+    cursor: pointer;
+}
+
+
+.nav-btn{
+    cursor: pointer;
+    border-radius:30px;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.nav-item:hover{
+    background-color: #d6d6d6;
+    
+    
+}
+
+.navbar form {
+    flex-grow: 1;
+    padding:0px 12px ;
+    position:relative;
+}
+
+.navbar form input{
+    min-width: 80%;
+    margin:0;
+    padding: 8px 16px 8px 32px;
+    font-size: 13px ;
+    border:solid 2px #00000070;
+    border-radius: 10px;
+}
+
+.navbar .icon{
+    position: absolute;
+    top:10px;
+    left:24px;
+    opacity: 80%;
+}

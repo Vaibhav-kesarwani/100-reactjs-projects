@@ -1,0 +1,33 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container h2 {
+  margin: auto;
+  font-size: 33px;
+  font-family:system-ui;
+  font-weight:300;
+}
+
+.main-container img{
+    width: 420px;
+    height: 420px;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+.main-container button{
+    width: 80px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    margin: auto;
+}
+
+.main-container h4{
+    margin: 54px auto;
+    font-size: 24px;
+    font-family:'Trebuchet MS';
+}
