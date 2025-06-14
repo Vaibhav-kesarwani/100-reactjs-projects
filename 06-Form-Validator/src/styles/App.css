@@ -1,0 +1,68 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  width: 560px;
+  color: #111;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 55px 3px rgba(199,199,199,0.42);
+  -moz-box-shadow: 0px 0px 55px 3px rgba(199,199,199,0.42);
+  box-shadow: 0px 0px 55px 3px rgba(199,199,199,0.42);
+  padding: 1.2em;
+  width: 400px;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-input input {
+  transition: 0.3s all ease;
+  background-color: transparent;
+  color: #111;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+.form-input input:focus-visible {
+  transition: 0.3s all ease;
+  outline: none;
+  border: 1px solid rgb(47, 77, 131);
+}
+
+.warning-message {
+  display: flex;
+  text-align: center;
+  font-size: 12px;
+  padding: 0 15px;
+}
+
+.error-message {
+  display: none;
+  line-height: initial;
+  color: red;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+input:invalid[focused="true"] ~ span {
+  display: flex;
+}
+
+input:invalid[focused="true"] {
+  border: 1px solid #ff0000;
+}
