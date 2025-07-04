@@ -5,7 +5,6 @@ def undo_renaming(path="."):
     folders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
 
     for folder in folders:
-        # Match folders that start with "NNN_" (e.g., 001_, 012_, 123_)
         match = re.match(r"^\d{3}_(.+)", folder)
         if match:
             new_folder_name = match.group(1)
