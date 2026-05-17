@@ -23,5 +23,6 @@ export const navbarConfig: Navbar = {
       label: "Contributors",
       href: "/contributors",
     },
+    
   ],
 };
