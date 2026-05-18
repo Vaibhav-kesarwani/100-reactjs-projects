@@ -1,24 +1,50 @@
-import Link from "next/link";
-import  Github from "lucide-react";
-import  Linkedin from "lucide-react";
-import  Twitter from "lucide-react";
-import  Mail from "lucide-react";
+import { FaGithub, FaLinkedin, FaXTwitter, FaEnvelope } from "react-icons/fa6";
 
 const Footer = () => {
+  const socialLinks = [
+    {
+      id: 1,
+      name: "Github",
+      href: "https://github.com",
+      icon: <FaGithub className="h-5 w-5" />,
+      isExternal: true,
+    },
+    {
+      id: 2,
+      name: "Linkedin",
+      href: "https://linkedin.com",
+      icon: <FaLinkedin className="h-5 w-5" />,
+      isExternal: true,
+    },
+    {
+      id: 3,
+      name: "Twitter",
+      href: "https://twitter.com",
+      icon: <FaXTwitter className="h-5 w-5" />, // Perfect up-to-date X logo
+      isExternal: true,
+    },
+    {
+      id: 4,
+      name: "Mail",
+      href: "mailto:support@example.com",
+      icon: <FaEnvelope className="h-5 w-5" />,
+      isExternal: false,
+    },
+  ];
+
   return (
-    <footer className="w-full border-t border-border mt-20 bg-background">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <footer className="w-full border-t border-border mt-20">
+      <div className="w-full py-12">
         
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           
           {/* Brand Section */}
-          <div>
-            <h2 className="text-2xl font-bold">
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold tracking-tight">
               100 ReactJS Projects
             </h2>
-
-            <p className="mt-4 text-sm md:text-base text-foreground/70 leading-relaxed">
+            <p className="text-sm leading-7 text-muted-foreground">
               A collection of 100+ React JS projects designed to help
               developers improve their frontend skills through practical
               implementation and modern UI development.
@@ -26,96 +52,50 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">
-              Quick Links
-            </h3>
-
-            <div className="flex flex-col gap-3 text-foreground/70">
-              <Link
-                href="/"
-                className="hover:text-primary transition-all duration-300"
-              >
-                Home
-              </Link>
-
-              <Link
-                href="/projects"
-                className="hover:text-primary transition-all duration-300"
-              >
-                Projects
-              </Link>
-
-              <Link
-                href="/contributors"
-                className="hover:text-primary transition-all duration-300"
-              >
-                Contributors
-              </Link>
-
-              <Link
-                href="/about"
-                className="hover:text-primary transition-all duration-300"
-              >
-                About
-              </Link>
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold">Quick Links</h3>
+            <div className="flex flex-col gap-3 text-sm text-muted-foreground">
+              {["Home", "Projects", "Contributors", "About"].map((link) => (
+                <a
+                  key={link}
+                  href="#"
+                  className="transition-colors hover:text-foreground"
+                >
+                  {link}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Contact & Social */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">
-              Connect With Us
-            </h3>
+          {/* Contact Section */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold">Connect With Us</h3>
 
-            <div className="flex items-center gap-4 mb-5">
-              <a
-                href="https://github.com"
-                target="_blank"
-                className="p-3 rounded-xl border border-border hover:bg-primary hover:text-white transition-all duration-300"
-              >
-                Github 
-              </a>
-
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                className="p-3 rounded-xl border border-border hover:bg-primary hover:text-white transition-all duration-300"
-              >
-                Linkedin 
-              </a>
-
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                className="p-3 rounded-xl border border-border hover:bg-primary hover:text-white transition-all duration-300"
-              >
-                Twitter 
-              </a>
-
-              <a
-                href="mailto:support@example.com"
-                className="p-3 rounded-xl border border-border hover:bg-primary hover:text-white transition-all duration-300"
-              >
-                Mail
-              </a>
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.id}
+                  href={social.href}
+                  target={social.isExternal ? "_blank" : undefined}
+                  rel={social.isExternal ? "noreferrer" : undefined}
+                  className="inline-flex items-center justify-center rounded-xl border border-border p-2.5 text-muted-foreground transition-all hover:bg-muted hover:text-foreground"
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
 
-            <p className="text-sm text-foreground/70">
+            <p className="text-sm text-muted-foreground">
               Email: support@example.com
             </p>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-border mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-foreground/60">
-          <p>
-            © 2026 100 ReactJS Projects. All rights reserved.
-          </p>
-
-          <p>
-            Built with React JS • Next.js • Tailwind CSS
-          </p>
+        <div className="mt-10 flex flex-col gap-4 border-t border-border pt-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+          <p>© 2026 100 ReactJS Projects. All rights reserved.</p>
+          <p>Built with React JS • Next.js • Tailwind CSS</p>
         </div>
       </div>
     </footer>

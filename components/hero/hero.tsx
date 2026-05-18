@@ -4,8 +4,6 @@ import Link from "next/link";
 import { buttonVariants } from "../ui/button";
 import AnimatedBadge from "../utils/animated-badge";
 import { AuroraText } from "../utils/aurora-text";
-import Footer from "../common/footer";
-
 export default function Hero() {
   return (
     <>
@@ -122,8 +120,6 @@ export default function Hero() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 }
