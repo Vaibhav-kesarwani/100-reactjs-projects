@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-import Link from "next/link";
+import { motion } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 type AnimatedBadgeProps = {
   text?: string;
@@ -11,7 +11,7 @@ type AnimatedBadgeProps = {
 };
 
 function hexToRgba(hexColor: string, alpha: number): string {
-  const hex = hexColor.replace("#", "");
+  const hex = hexColor.replace('#', '');
   if (hex.length === 3) {
     const r = parseInt(hex[0] + hex[0], 16);
     const g = parseInt(hex[1] + hex[1], 16);
@@ -28,8 +28,8 @@ function hexToRgba(hexColor: string, alpha: number): string {
 }
 
 const AnimatedBadge = ({
-  text = "Introducing Eldoraui",
-  color = "#22d3ee",
+  text = 'Introducing Eldoraui',
+  color = '#22d3ee',
   href,
 }: AnimatedBadgeProps) => {
   const content = (
@@ -38,12 +38,12 @@ const AnimatedBadge = ({
       whileInView={{
         opacity: 1,
         y: 0,
-        filter: "blur(0px)",
+        filter: 'blur(0px)',
       }}
       transition={{
         duration: 0.3,
         delay: 0.1,
-        ease: "easeInOut",
+        ease: 'easeInOut',
       }}
       viewport={{ once: true }}
       className="group relative flex max-w-fit items-center justify-center gap-3 rounded-full border border-neutral-300 bg-white px-4 py-1.5 text-neutral-700 transition-colors dark:border-neutral-700/80 dark:bg-black dark:text-zinc-300"

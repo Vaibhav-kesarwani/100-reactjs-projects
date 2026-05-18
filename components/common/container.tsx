@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type ContainerProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode;
@@ -6,7 +6,7 @@ type ContainerProps = React.HTMLAttributes<HTMLDivElement> & {
 
 export default function Container({
   children,
-  className = "",
+  className = '',
   ...props
 }: ContainerProps) {
   return (

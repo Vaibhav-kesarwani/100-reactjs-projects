@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import type { MouseEvent } from "react";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import type { MouseEvent } from 'react';
+import { Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
-const THEME_TRANSITION_STYLE_ID = "theme-toggle-transition-styles";
+const THEME_TRANSITION_STYLE_ID = 'theme-toggle-transition-styles';
 const THEME_TRANSITION_DURATION_MS = 950;
-const THEME_TRANSITION_EASING = "cubic-bezier(0.22, 1, 0.36, 1)";
+const THEME_TRANSITION_EASING = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
 type ThemeTransitionValues = {
   originX: number;
@@ -42,7 +42,7 @@ function updateThemeTransitionStyles({
   ) as HTMLStyleElement | null;
 
   if (!styleElement) {
-    styleElement = document.createElement("style");
+    styleElement = document.createElement('style');
     styleElement.id = THEME_TRANSITION_STYLE_ID;
     document.head.appendChild(styleElement);
   }
@@ -103,16 +103,16 @@ function updateThemeTransitionStyles({
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
-  const label = "Toggle theme";
+  const label = 'Toggle theme';
 
   const handleToggle = (event: MouseEvent<HTMLButtonElement>) => {
-    if (typeof document === "undefined" || typeof window === "undefined") {
+    if (typeof document === 'undefined' || typeof window === 'undefined') {
       return;
     }
 
-    const nextTheme = document.documentElement.classList.contains("dark")
-      ? "light"
-      : "dark";
+    const nextTheme = document.documentElement.classList.contains('dark')
+      ? 'light'
+      : 'dark';
 
     updateThemeTransitionStyles(getThemeTransitionValues(event.currentTarget));
 

@@ -1,6 +1,6 @@
-import { logoConfig } from "@/config/logo";
-import Image from "next/image";
-import Link from "next/link";
+import { logoConfig } from '@/config/logo';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Logo() {
   return (

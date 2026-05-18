@@ -122,6 +122,7 @@ Add your project details inside the `project-Item.tsx` file.
     difficulty: "Beginner" // Beginner | Intermediate | Advanced
 }
 ```
+
 ### Difficulty Levels
 
 Every project must include a valid `difficulty` field.

@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { motion, useReducedMotion, useSpring } from "framer-motion";
-import { Star } from "lucide-react";
-import { useEffect, useState } from "react";
+import { cn } from '@/lib/utils';
+import { motion, useReducedMotion, useSpring } from 'framer-motion';
+import { Star } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const TRANSITION_DURATION = 0.3;
 const EASE_OUT_CUBIC = [0.215, 0.61, 0.355, 1] as const;
@@ -32,14 +32,14 @@ export interface GitHubStarsAnimationProps {
 }
 
 export default function GitHubStarsAnimation({
-  owner = "educlopez",
-  repo = "smoothui",
+  owner = 'educlopez',
+  repo = 'smoothui',
   stargazers: providedStargazers,
   starCount: providedStarCount,
   apiEndpoint,
-  className = "",
-  avatarClassName = "",
-  countClassName = "",
+  className = '',
+  avatarClassName = '',
+  countClassName = '',
   showAvatars = true,
   maxAvatars = AVATAR_COUNT,
 }: GitHubStarsAnimationProps) {
@@ -92,7 +92,7 @@ export default function GitHubStarsAnimation({
         // Fallback to GitHub API directly (client-side)
         // Note: This has rate limits, so using a token is recommended
         const headers: HeadersInit = {
-          Accept: "application/vnd.github.v3+json",
+          Accept: 'application/vnd.github.v3+json',
         };
 
         // Parallelize independent fetches to eliminate waterfall
@@ -180,7 +180,7 @@ export default function GitHubStarsAnimation({
   if (isLoading) {
     return (
       <div
-        className={cn("flex items-center gap-3 text-foreground/60", className)}
+        className={cn('flex items-center gap-3 text-foreground/60', className)}
       >
         <div className="h-10 w-10 animate-pulse rounded-full bg-foreground/20" />
         <div className="h-6 w-20 animate-pulse rounded bg-foreground/20" />
@@ -195,7 +195,7 @@ export default function GitHubStarsAnimation({
   const visibleAvatars = stargazers.slice(0, maxAvatars);
 
   return (
-    <div className={cn("flex items-center gap-3", className)}>
+    <div className={cn('flex items-center gap-3', className)}>
       {/* Avatars */}
       {showAvatars && visibleAvatars.length > 0 && (
         <div className="relative flex items-center">
@@ -212,7 +212,7 @@ export default function GitHubStarsAnimation({
               }
               aria-label={`${stargazer.login}'s GitHub profile`}
               className={cn(
-                "relative z-10 h-10 w-10 overflow-hidden rounded-full border-2 border-background bg-background transition-transform hover:z-20 hover:scale-110",
+                'relative z-10 h-10 w-10 overflow-hidden rounded-full border-2 border-background bg-background transition-transform hover:z-20 hover:scale-110',
                 avatarClassName,
               )}
               href={stargazer.html_url}
@@ -228,7 +228,7 @@ export default function GitHubStarsAnimation({
               key={stargazer.login}
               rel="noopener noreferrer"
               style={{
-                marginLeft: index > 0 ? "-8px" : "0",
+                marginLeft: index > 0 ? '-8px' : '0',
               }}
               target="_blank"
               transition={
@@ -255,7 +255,7 @@ export default function GitHubStarsAnimation({
       {/* Star count */}
       <motion.div
         animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-        className={cn("flex items-center gap-1.5 font-medium", countClassName)}
+        className={cn('flex items-center gap-1.5 font-medium', countClassName)}
         initial={
           shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.9 }
         }
@@ -284,7 +284,7 @@ export default function GitHubStarsAnimation({
           {displayCount.toLocaleString()}
         </motion.span>
         <span className="text-foreground/70 text-sm">
-          {displayCount === 1 ? "star" : "stars"}
+          {displayCount === 1 ? 'star' : 'stars'}
         </span>
       </motion.div>
     </div>

@@ -1,21 +1,21 @@
-import ContributorGrid from "@/components/contributors/contributor-grid";
-import { AuroraText } from "@/components/utils/aurora-text";
-import { contributorsConfig } from "@/config/contributors";
-import { generateMetadata as getMetadata } from "@/config/meta";
+import ContributorGrid from '@/components/contributors/contributor-grid';
+import { AuroraText } from '@/components/utils/aurora-text';
+import { contributorsConfig } from '@/config/contributors';
+import { generateMetadata as getMetadata } from '@/config/meta';
 
-export const metadata = getMetadata("/contributors");
+export const metadata = getMetadata('/contributors');
 
 export default async function Contributors() {
   return (
     <section className="mt-20 relative flex min-h-screen items-center justify-center overflow-hidden px-4 text-center">
       <div className="relative z-10 mx-auto max-w-5xl">
         <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-          Contributors of 100+{" "}
+          Contributors of 100+{' '}
           <AuroraText
-            colors={["#22d3ee", "#3b82f6", "#6366f1", "#a855f7", "#ec4899"]}
+            colors={['#22d3ee', '#3b82f6', '#6366f1', '#a855f7', '#ec4899']}
           >
             React JS
-          </AuroraText>{" "}
+          </AuroraText>{' '}
           Projects
         </h1>
 

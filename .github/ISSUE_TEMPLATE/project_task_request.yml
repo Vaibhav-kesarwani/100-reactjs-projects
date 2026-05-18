@@ -1,6 +1,6 @@
 name: Project/Task Request
 description: Propose a new project idea or a structured task for contributors.
-title: "[Task]: "
+title: '[Task]: '
 body:
   - type: markdown
     attributes:
@@ -19,7 +19,7 @@ body:
   - type: checkboxes
     id: checks
     attributes:
-      label: "[ISSUE FORM] Pre-Submission Checks"
+      label: '[ISSUE FORM] Pre-Submission Checks'
       description: Confirm the following before submitting.
       options:
         - label: I have searched the existing issues and confirmed this request has not been raised already.
@@ -30,7 +30,7 @@ body:
   - type: dropdown
     id: contribution_program
     attributes:
-      label: "[ISSUE FORM] Contribution Program"
+      label: '[ISSUE FORM] Contribution Program'
       description: Select the program you are contributing under.
       options:
         - General / Not part of a contribution program
@@ -42,7 +42,7 @@ body:
   - type: dropdown
     id: difficulty
     attributes:
-      label: "[ISSUE FORM] Difficulty Level"
+      label: '[ISSUE FORM] Difficulty Level'
       description: Estimate the difficulty of this task or project request.
       options:
         - Beginner
@@ -55,7 +55,7 @@ body:
   - type: input
     id: requested_task
     attributes:
-      label: "[ISSUE FORM] Requested Project or Task"
+      label: '[ISSUE FORM] Requested Project or Task'
       description: Name the project idea or task you want to propose.
       placeholder: Add a Kanban board app, improve contributor page filters...
     validations:
@@ -64,7 +64,7 @@ body:
   - type: textarea
     id: problem_description
     attributes:
-      label: "[ISSUE FORM] Problem Description"
+      label: '[ISSUE FORM] Problem Description'
       description: What problem does this task or project solve?
       placeholder: This would help contributors learn...
     validations:
@@ -73,7 +73,7 @@ body:
   - type: textarea
     id: expected_solution
     attributes:
-      label: "[ISSUE FORM] Expected Solution or Scope"
+      label: '[ISSUE FORM] Expected Solution or Scope'
       description: Describe the expected outcome, deliverables, or boundaries.
       placeholder: The task should include...
     validations:
@@ -82,13 +82,13 @@ body:
   - type: textarea
     id: resources
     attributes:
-      label: "[ISSUE FORM] Resources or References"
+      label: '[ISSUE FORM] Resources or References'
       description: Add references, examples, or supporting links if available.
       placeholder: Reference links, inspiration, or related issues...
 
   - type: textarea
     id: additional_context
     attributes:
-      label: "[ISSUE FORM] Additional Context"
+      label: '[ISSUE FORM] Additional Context'
       description: Share anything else that would help maintainers review this request.
       placeholder: Additional details...

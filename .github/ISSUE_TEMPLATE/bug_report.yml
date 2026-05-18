@@ -1,6 +1,6 @@
 name: Bug Report
 description: Report a reproducible problem in the repository.
-title: "[Bug]: "
+title: '[Bug]: '
 body:
   - type: markdown
     attributes:
@@ -19,7 +19,7 @@ body:
   - type: checkboxes
     id: checks
     attributes:
-      label: "[ISSUE FORM] Pre-Submission Checks"
+      label: '[ISSUE FORM] Pre-Submission Checks'
       description: Confirm the following before submitting.
       options:
         - label: I have searched the existing issues and confirmed this bug has not been reported already.
@@ -30,7 +30,7 @@ body:
   - type: dropdown
     id: contribution_program
     attributes:
-      label: "[ISSUE FORM] Contribution Program"
+      label: '[ISSUE FORM] Contribution Program'
       description: Select the program you are contributing under.
       options:
         - General / Not part of a contribution program
@@ -42,7 +42,7 @@ body:
   - type: dropdown
     id: difficulty
     attributes:
-      label: "[ISSUE FORM] Difficulty Level"
+      label: '[ISSUE FORM] Difficulty Level'
       description: Estimate the difficulty of fixing this issue.
       options:
         - Beginner
@@ -55,7 +55,7 @@ body:
   - type: textarea
     id: current_behavior
     attributes:
-      label: "[ISSUE FORM] Current Behavior"
+      label: '[ISSUE FORM] Current Behavior'
       description: Describe what is happening right now.
       placeholder: The page crashes when I click...
     validations:
@@ -64,7 +64,7 @@ body:
   - type: textarea
     id: steps_to_reproduce
     attributes:
-      label: "[ISSUE FORM] Steps to Reproduce"
+      label: '[ISSUE FORM] Steps to Reproduce'
       description: Share the exact steps needed to reproduce the bug.
       placeholder: |
         1. Go to ...
@@ -76,7 +76,7 @@ body:
   - type: textarea
     id: expected_behavior
     attributes:
-      label: "[ISSUE FORM] Expected Behavior"
+      label: '[ISSUE FORM] Expected Behavior'
       description: Describe what should happen instead.
       placeholder: The page should...
     validations:
@@ -85,20 +85,20 @@ body:
   - type: input
     id: environment
     attributes:
-      label: "[ISSUE FORM] Environment"
+      label: '[ISSUE FORM] Environment'
       description: Add any relevant environment details.
       placeholder: Windows 11, Chrome 136, mobile viewport
 
   - type: textarea
     id: screenshots
     attributes:
-      label: "[ISSUE FORM] Screenshots or References"
+      label: '[ISSUE FORM] Screenshots or References'
       description: Paste screenshot links or any references that help explain the issue.
       placeholder: Add screenshot links, console output, or related references here.
 
   - type: textarea
     id: additional_context
     attributes:
-      label: "[ISSUE FORM] Additional Context"
+      label: '[ISSUE FORM] Additional Context'
       description: Share anything else that would help triage this bug.
       placeholder: Additional details...

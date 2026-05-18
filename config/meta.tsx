@@ -3,108 +3,108 @@ export interface PageMeta {
   description: string;
   keywords?: string[];
   ogImage?: string;
-  twitterCard?: "summary" | "summary_large_image";
+  twitterCard?: 'summary' | 'summary_large_image';
 }
 
 // Base site configuration
 export const siteConfig = {
-  name: "100+ Reactjs Projects",
-  title: "Reactjs Projects",
+  name: '100+ Reactjs Projects',
+  title: 'Reactjs Projects',
   description:
-    "Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.",
-  url: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
-  ogImage: "/meta/hero.png",
+    'Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.',
+  url: process.env.NEXT_PUBLIC_URL || 'http://localhost:3000',
+  ogImage: '/meta/hero.png',
   author: {
-    name: "Vaibhav Kesarwani",
-    twitter: "@vaibhav_k__",
-    github: "Vaibhav-kesarwani",
-    linkedin: "vaibhavdev",
-    email: "vaibhavkesarwani100@gmail.com",
+    name: 'Vaibhav Kesarwani',
+    twitter: '@vaibhav_k__',
+    github: 'Vaibhav-kesarwani',
+    linkedin: 'vaibhavdev',
+    email: 'vaibhavkesarwani100@gmail.com',
   },
   keywords: [
-    "100+ Reactjs projects",
-    "100 reactjs projects",
-    "Nextjs Projects",
-    "50+ React.js Projects",
-    "Open Source",
-    "Community",
-    "nsoc",
-    "Nexus Spring of Code",
-    "gssoc",
-    "GirlScript Summer of Code",
+    '100+ Reactjs projects',
+    '100 reactjs projects',
+    'Nextjs Projects',
+    '50+ React.js Projects',
+    'Open Source',
+    'Community',
+    'nsoc',
+    'Nexus Spring of Code',
+    'gssoc',
+    'GirlScript Summer of Code',
   ],
 };
 
 export const pageMetadata: Record<string, PageMeta> = {
-  "/": {
-    title: "100+ Reactjs Projects",
+  '/': {
+    title: '100+ Reactjs Projects',
     description:
-      "Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.",
+      'Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.',
     keywords: [
-      "100+ Reactjs projects",
-      "100 reactjs projects",
-      "Nextjs Projects",
-      "50+ React.js Projects",
-      "Open Source",
-      "Community",
-      "nsoc",
-      "Nexus Spring of Code",
-      "gssoc",
-      "GirlScript Summer of Code",
+      '100+ Reactjs projects',
+      '100 reactjs projects',
+      'Nextjs Projects',
+      '50+ React.js Projects',
+      'Open Source',
+      'Community',
+      'nsoc',
+      'Nexus Spring of Code',
+      'gssoc',
+      'GirlScript Summer of Code',
     ],
-    ogImage: "/meta/hero.png",
-    twitterCard: "summary_large_image",
+    ogImage: '/meta/hero.png',
+    twitterCard: 'summary_large_image',
   },
 
-  "/projects": {
-    title: "100+ Reactjs Projects | Projects",
+  '/projects': {
+    title: '100+ Reactjs Projects | Projects',
     description:
-      "Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.",
+      'Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.',
     keywords: [
-      "100+ Reactjs projects",
-      "100 reactjs projects",
-      "Nextjs Projects",
-      "sendly",
-      "gitsolve",
-      "github",
-      "50+ React.js Projects",
-      "Open Source",
-      "Community",
-      "nsoc",
-      "Nexus Spring of Code",
-      "gssoc",
-      "GirlScript Summer of Code",
+      '100+ Reactjs projects',
+      '100 reactjs projects',
+      'Nextjs Projects',
+      'sendly',
+      'gitsolve',
+      'github',
+      '50+ React.js Projects',
+      'Open Source',
+      'Community',
+      'nsoc',
+      'Nexus Spring of Code',
+      'gssoc',
+      'GirlScript Summer of Code',
     ],
-    ogImage: "/meta/projects.png",
-    twitterCard: "summary_large_image",
+    ogImage: '/meta/projects.png',
+    twitterCard: 'summary_large_image',
   },
 
-  "/contributors": {
-    title: "Contributors of 100+ Reactjs projects",
+  '/contributors': {
+    title: 'Contributors of 100+ Reactjs projects',
     description:
-      "Meet the amazing developers behind this project. Discover our top contributors and their impactful contributions.",
+      'Meet the amazing developers behind this project. Discover our top contributors and their impactful contributions.',
     keywords: [
-      "100+ Reactjs projects",
-      "100 reactjs projects",
-      "Nextjs Projects",
-      "GitHub Contributors",
-      "Top Contributors",
-      "50+ React.js Projects",
-      "Open Source",
-      "Community",
-      "nsoc",
-      "Nexus Spring of Code",
-      "gssoc",
-      "GirlScript Summer of Code",
+      '100+ Reactjs projects',
+      '100 reactjs projects',
+      'Nextjs Projects',
+      'GitHub Contributors',
+      'Top Contributors',
+      '50+ React.js Projects',
+      'Open Source',
+      'Community',
+      'nsoc',
+      'Nexus Spring of Code',
+      'gssoc',
+      'GirlScript Summer of Code',
     ],
-    ogImage: "/meta/projects.png",
-    twitterCard: "summary_large_image",
+    ogImage: '/meta/projects.png',
+    twitterCard: 'summary_large_image',
   },
 };
 
 // Helper function to get metadata for a specific page
 export function getPageMetadata(pathname: string): PageMeta {
-  return pageMetadata[pathname] || pageMetadata["/"];
+  return pageMetadata[pathname] || pageMetadata['/'];
 }
 
 // Helper function to generate complete metadata object for Next.js
@@ -116,15 +116,15 @@ export function generateMetadata(pathname: string) {
     title: pageMeta.title,
     description: pageMeta.description,
     icons: {
-      icon: "/logo/logo.png",
-      shortcut: "/logo/logo.png",
-      apple: "/logo/logo.png",
+      icon: '/logo/logo.png',
+      shortcut: '/logo/logo.png',
+      apple: '/logo/logo.png',
     },
-    keywords: pageMeta.keywords?.join(", "),
+    keywords: pageMeta.keywords?.join(', '),
     authors: [{ name: siteConfig.author.name }],
     creator: siteConfig.author.name,
     openGraph: {
-      type: "website",
+      type: 'website',
       url: `${siteConfig.url}${pathname}`,
       title: pageMeta.title,
       description: pageMeta.description,
@@ -139,7 +139,7 @@ export function generateMetadata(pathname: string) {
       ],
     },
     twitter: {
-      card: pageMeta.twitterCard || "summary_large_image",
+      card: pageMeta.twitterCard || 'summary_large_image',
       title: pageMeta.title,
       description: pageMeta.description,
       creator: siteConfig.author.twitter,
@@ -151,9 +151,9 @@ export function generateMetadata(pathname: string) {
       googleBot: {
         index: true,
         follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
     alternates: {

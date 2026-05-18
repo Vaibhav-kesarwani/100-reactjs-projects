@@ -1,6 +1,6 @@
 name: Documentation Improvement
 description: Suggest improvements to guides, docs, or contributor instructions.
-title: "[Docs]: "
+title: '[Docs]: '
 body:
   - type: markdown
     attributes:
@@ -19,7 +19,7 @@ body:
   - type: checkboxes
     id: checks
     attributes:
-      label: "[ISSUE FORM] Pre-Submission Checks"
+      label: '[ISSUE FORM] Pre-Submission Checks'
       description: Confirm the following before submitting.
       options:
         - label: I have searched the existing issues and confirmed this documentation issue has not been raised already.
@@ -30,7 +30,7 @@ body:
   - type: dropdown
     id: contribution_program
     attributes:
-      label: "[ISSUE FORM] Contribution Program"
+      label: '[ISSUE FORM] Contribution Program'
       description: Select the program you are contributing under.
       options:
         - General / Not part of a contribution program
@@ -42,7 +42,7 @@ body:
   - type: dropdown
     id: difficulty
     attributes:
-      label: "[ISSUE FORM] Difficulty Level"
+      label: '[ISSUE FORM] Difficulty Level'
       description: Estimate the difficulty of this documentation update.
       options:
         - Beginner
@@ -55,7 +55,7 @@ body:
   - type: input
     id: affected_area
     attributes:
-      label: "[ISSUE FORM] Affected Area"
+      label: '[ISSUE FORM] Affected Area'
       description: Which file, page, or section needs improvement?
       placeholder: README.md, contributing guide, setup steps...
     validations:
@@ -64,7 +64,7 @@ body:
   - type: textarea
     id: documentation_gap
     attributes:
-      label: "[ISSUE FORM] Problem Description"
+      label: '[ISSUE FORM] Problem Description'
       description: What is unclear, missing, outdated, or incorrect?
       placeholder: The current docs do not explain...
     validations:
@@ -73,7 +73,7 @@ body:
   - type: textarea
     id: expected_solution
     attributes:
-      label: "[ISSUE FORM] Expected Solution"
+      label: '[ISSUE FORM] Expected Solution'
       description: Describe the improvement you want to see.
       placeholder: Add a section that explains...
     validations:
@@ -82,13 +82,13 @@ body:
   - type: textarea
     id: references
     attributes:
-      label: "[ISSUE FORM] References or Supporting Material"
+      label: '[ISSUE FORM] References or Supporting Material'
       description: Add related links, screenshots, or examples if they help.
       placeholder: Related links or references...
 
   - type: textarea
     id: additional_context
     attributes:
-      label: "[ISSUE FORM] Additional Context"
+      label: '[ISSUE FORM] Additional Context'
       description: Share anything else maintainers should know.
       placeholder: Additional details...

@@ -1,7 +1,7 @@
-import { getContributors } from "@/lib/get-contributors";
-import { GitHubContributor } from "@/types/github";
-import Image from "next/image";
-import Link from "next/link";
+import { getContributors } from '@/lib/get-contributors';
+import { GitHubContributor } from '@/types/github';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function ContributorGrid() {
   const contributors: GitHubContributor[] = (await getContributors()).sort(
@@ -32,13 +32,13 @@ export default async function ContributorGrid() {
               className={`flex items-center justify-center z-10 size-6 absolute bottom-22 md:bottom-18 right-13 text-xs font-semibold rounded-full shadow-sm
                 ${
                   index === 0
-                    ? "bg-yellow-100 text-black"
+                    ? 'bg-yellow-100 text-black'
                     : index === 1
-                      ? "bg-gray-300 text-black"
-                      : "bg-amber-600 text-white"
+                      ? 'bg-gray-300 text-black'
+                      : 'bg-amber-600 text-white'
                 }`}
             >
-              {index === 0 ? "1st" : index === 1 ? "2nd" : "3rd"}
+              {index === 0 ? '1st' : index === 1 ? '2nd' : '3rd'}
             </div>
           )}
 
@@ -49,7 +49,7 @@ export default async function ContributorGrid() {
 
           <p className="mt-1 text-xs font-semibold text-start">
             <span className="text-xs font-medium text-foreground/80">
-              Total:{" "}
+              Total:{' '}
             </span>
             {user.contributions} commits
           </p>

@@ -1,6 +1,6 @@
 name: UI/UX Enhancement
 description: Suggest a user interface or user experience improvement.
-title: "[UI/UX]: "
+title: '[UI/UX]: '
 body:
   - type: markdown
     attributes:
@@ -19,7 +19,7 @@ body:
   - type: checkboxes
     id: checks
     attributes:
-      label: "[ISSUE FORM] Pre-Submission Checks"
+      label: '[ISSUE FORM] Pre-Submission Checks'
       description: Confirm the following before submitting.
       options:
         - label: I have searched the existing issues and confirmed this enhancement has not been raised already.
@@ -30,7 +30,7 @@ body:
   - type: dropdown
     id: contribution_program
     attributes:
-      label: "[ISSUE FORM] Contribution Program"
+      label: '[ISSUE FORM] Contribution Program'
       description: Select the program you are contributing under.
       options:
         - General / Not part of a contribution program
@@ -42,7 +42,7 @@ body:
   - type: dropdown
     id: difficulty
     attributes:
-      label: "[ISSUE FORM] Difficulty Level"
+      label: '[ISSUE FORM] Difficulty Level'
       description: Estimate the implementation difficulty.
       options:
         - Beginner
@@ -55,7 +55,7 @@ body:
   - type: input
     id: affected_area
     attributes:
-      label: "[ISSUE FORM] Affected Page or Component"
+      label: '[ISSUE FORM] Affected Page or Component'
       description: Which page, section, or component should be improved?
       placeholder: Navbar, hero section, contributors page...
     validations:
@@ -64,7 +64,7 @@ body:
   - type: textarea
     id: current_problem
     attributes:
-      label: "[ISSUE FORM] Problem Description"
+      label: '[ISSUE FORM] Problem Description'
       description: What is the current UI/UX problem?
       placeholder: The current layout feels crowded because...
     validations:
@@ -73,7 +73,7 @@ body:
   - type: textarea
     id: expected_solution
     attributes:
-      label: "[ISSUE FORM] Expected Solution"
+      label: '[ISSUE FORM] Expected Solution'
       description: Describe the enhancement you want.
       placeholder: Improve the spacing, hierarchy, or interaction by...
     validations:
@@ -82,13 +82,13 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: "[ISSUE FORM] Screenshots, Mockups, or References"
+      label: '[ISSUE FORM] Screenshots, Mockups, or References'
       description: Add any visuals or references that clarify the request.
       placeholder: Add screenshot links, design references, or mockups here.
 
   - type: textarea
     id: additional_context
     attributes:
-      label: "[ISSUE FORM] Additional Context"
+      label: '[ISSUE FORM] Additional Context'
       description: Share anything else maintainers should know.
       placeholder: Additional details...

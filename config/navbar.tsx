@@ -8,20 +8,20 @@ interface Navbar {
 export const navbarConfig: Navbar = {
   items: [
     {
-      label: "Home",
-      href: "/",
+      label: 'Home',
+      href: '/',
     },
     {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: 'Dashboard',
+      href: '/dashboard',
     },
     {
-      label: "Projects",
-      href: "/projects",
+      label: 'Projects',
+      href: '/projects',
     },
     {
-      label: "Contributors",
-      href: "/contributors",
+      label: 'Contributors',
+      href: '/contributors',
     },
   ],
 };

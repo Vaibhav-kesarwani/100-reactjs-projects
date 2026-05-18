@@ -1,19 +1,19 @@
-import Container from "@/components/common/container";
-import Navbar from "@/components/common/navbar";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { ThemeProvider } from "@/components/utils/theme-provider";
-import { generateMetadata as getMetadata } from "@/config/meta";
-import "@/styles/globals.css";
-import { Outfit } from "next/font/google";
-import { ViewTransitions } from "next-view-transitions";
-import { Toaster } from "sonner";
+import Container from '@/components/common/container';
+import Navbar from '@/components/common/navbar';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { ThemeProvider } from '@/components/utils/theme-provider';
+import { generateMetadata as getMetadata } from '@/config/meta';
+import '@/styles/globals.css';
+import { Outfit } from 'next/font/google';
+import { ViewTransitions } from 'next-view-transitions';
+import { Toaster } from 'sonner';
 
 const fontSans = Outfit({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  subsets: ['latin'],
+  variable: '--font-sans',
 });
 
-export const metadata = getMetadata("/");
+export const metadata = getMetadata('/');
 
 export default function RootLayout({
   children,
