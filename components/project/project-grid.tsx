@@ -13,6 +13,7 @@ const DIFFICULTY_LEVELS = ["Beginner", "Intermediate", "Advanced"] as const;
 const TECH_ALIASES: Record<string, string[]> = {
   "React JS": ["React", "React js", "React.js", "React JS"],
   "Tailwind CSS": ["Tailwind CSS", "Tailwind css", "Tailwind", "TailwindCSS"],
+  "Next JS": ["Next", "Next js", "Next.js", "Next JS"],
 };
 
 // Reverse map: any alias → canonical name  e.g. "ReactJS" → "React"
