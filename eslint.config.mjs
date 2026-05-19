@@ -1,14 +1,34 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import pluginReact from 'eslint-plugin-react';
+import prettier from 'eslint-config-prettier';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
   {
     files: ['**/*.{js,mjs,cjs,jsx}'],
-    plugins: { js },
+
+    plugins: {
+      js,
+      react: pluginReact,
+    },
+
     extends: ['js/recommended'],
-    languageOptions: { globals: globals.browser },
+
+    languageOptions: {
+      globals: globals.browser,
+    },
+
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
   },
+
   pluginReact.configs.flat.recommended,
+
+  prettier,
 ]);
+
+const test={name:"aditya"}
