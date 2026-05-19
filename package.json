@@ -8,7 +8,7 @@
     "start": "next start",
     "prepare": "husky",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --check ."
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
@@ -54,10 +54,10 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  }
+"lint-staged": {
+  "*.{js,jsx,ts,tsx}": [
+    "eslint --fix",
+    "prettier --write"
+  ]
+}
 }

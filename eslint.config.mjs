@@ -30,5 +30,3 @@ export default defineConfig([
 
   prettier,
 ]);
-
-const test={name:"aditya"}
