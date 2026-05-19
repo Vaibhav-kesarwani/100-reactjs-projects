@@ -89,7 +89,7 @@ export default function ProjectGrid() {
 
   const filteredProjects = useMemo(() => {
     return projectConfig.projects.filter((item) => {
-      const query = searchQuery.toLowerCase();
+      const query = searchQuery.trim().toLowerCase();
 
       const matchesSearch =
         item.projectName.toLowerCase().includes(query) ||
