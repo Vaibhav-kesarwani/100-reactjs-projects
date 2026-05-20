@@ -8,6 +8,7 @@ import "@/styles/globals.css";
 import { Outfit } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "sonner";
+import FluidCursor from "@/components/fluid-cursor";
 
 const fontSans = Outfit({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <FluidCursor />
             <LearningProvider>
               <TooltipProvider>
                 <Container className="min-h-screen py-6">
@@ -43,6 +45,7 @@ export default function RootLayout({
                 <Toaster richColors position="top-right" />
               </TooltipProvider>
             </LearningProvider>
+            <FluidCursor />
           </ThemeProvider>
         </body>
       </html>
