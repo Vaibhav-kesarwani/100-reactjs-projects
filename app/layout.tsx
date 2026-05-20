@@ -1,6 +1,7 @@
 import Container from "@/components/common/container";
 import Navbar from "@/components/common/navbar";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { LearningProvider } from "@/components/utils/learning-provider";
 import { ThemeProvider } from "@/components/utils/theme-provider";
 import { generateMetadata as getMetadata } from "@/config/meta";
 import "@/styles/globals.css";
@@ -33,13 +34,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <TooltipProvider>
-              <Container className="min-h-screen py-6">
-                <Navbar />
-                {children}
-              </Container>
-              <Toaster richColors position="top-right" />
-            </TooltipProvider>
+            <LearningProvider>
+              <TooltipProvider>
+                <Container className="min-h-screen py-6">
+                  <Navbar />
+                  {children}
+                </Container>
+                <Toaster richColors position="top-right" />
+              </TooltipProvider>
+            </LearningProvider>
           </ThemeProvider>
         </body>
       </html>

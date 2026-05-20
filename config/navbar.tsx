@@ -20,6 +20,22 @@ export const navbarConfig: Navbar = {
       href: "/projects",
     },
     {
+      label: "Quiz",
+      href: "/quiz",
+    },
+    {
+      label: "Coding Quiz",
+      href: "/coding-quiz",
+    },
+    {
+      label: "Practice",
+      href: "/practice",
+    },
+    {
+      label: "Flashcards",
+      href: "/flashcards",
+    },
+    {
       label: "Contributors",
       href: "/contributors",
     },
