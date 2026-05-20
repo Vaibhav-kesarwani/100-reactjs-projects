@@ -2,6 +2,16 @@ import { ProjectItems } from "./projects";
 
 export const projectItemConfig: ProjectItems[] = [
   {
+    projectName: "AI Resume Analyzer",
+    description:
+      "A high-performance AI resume analyzer that parses PDF/Text resumes,提炼核心技术图谱，并结合 STAR 黄金法则生成精细化、高说服力的简历诊断书与修改对照方案。",
+    projectImage: "resume-analyzer.png",
+    githubLink: "https://github.com/Vaibhav-kesarwani/100-reactjs-projects",
+    liveLink: "/projects/resume-analyzer",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "NLP Engine", "LLM APIs"],
+    difficulty: "Advanced",
+  },
+  {
     projectName: "Sendly",
     description:
       "Sendly lets you share files across devices instantly—no signups, no quality loss, just convenience.",
