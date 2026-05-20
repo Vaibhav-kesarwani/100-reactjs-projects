@@ -2,6 +2,16 @@ import { ProjectItems } from "./projects";
 
 export const projectItemConfig: ProjectItems[] = [
   {
+    projectName: "Roadwatch UI",
+    description:
+      "An AI-powered infrastructure & geo-spatial road defect tracking dashboard with custom Canvas vector roadmaps, dynamic severity filtering, Recharts analytics, and simulated GPS media upload.",
+    projectImage: "roadwatch-ui.png",
+    githubLink: "https://github.com/cf3901646/100-reactjs-projects",
+    liveLink: "/projects/roadwatch-ui",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "HTML5 Canvas", "Recharts"],
+    difficulty: "Advanced",
+  },
+  {
     projectName: "Sendly",
     description:
       "Sendly lets you share files across devices instantly—no signups, no quality loss, just convenience.",
