@@ -27,26 +27,9 @@ export default function ProjectGrid() {
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  // --- Local States for Preview Modal ---
+  // --- Only Local States for Preview Modal Sheet ---
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeModalProject, setActiveModalProject] = useState<ProjectItem | null>(null);
-
-  // --- Scroll Progress Bar State ---
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  // --- Scroll Event Listener Dynamic Logic ---
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        const progress = (window.scrollY / totalHeight) * 100;
-        setScrollProgress(progress);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favoriteProjects");
@@ -55,7 +38,6 @@ export default function ProjectGrid() {
     }
   }, []);
 
-  // Reset visible count when filters change
   useEffect(() => {
     setVisibleCount(PROJECTS_PER_PAGE);
   }, [searchQuery, showFavorites]);
@@ -131,21 +113,11 @@ export default function ProjectGrid() {
 
   return (
     <div className="mt-15">
-      {/* --- Fixed Top Floating Scroll Progress Bar Sheet Indicator --- */}
-      <div className="fixed top-0 left-0 w-full h-[4px] bg-transparent z-[100] pointer-events-none">
-        <div 
-          className="h-full bg-emerald-500 shadow-[0_0_10px_#10b981] transition-all duration-75 ease-out"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       <div className="mt-6 mb-8 flex items-center gap-4">
         <button
           onClick={() => setShowFavorites((prev) => !prev)}
-          aria-pressed={showFavorites}
-          aria-label={showFavorites ? "Show all projects" : "Show favorite projects only"}
           className={`flex items-center gap-2 px-4 py-2 rounded-md border cursor-pointer ${
             showFavorites
               ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400"
@@ -183,7 +155,6 @@ export default function ProjectGrid() {
                       fill
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority={index === 0}
                     />
                     <div className="absolute inset-0 bg-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
                       <button
@@ -196,8 +167,6 @@ export default function ProjectGrid() {
 
                     <button
                       onClick={() => toggleFavorite(item.projectName)}
-                      aria-pressed={favorites.includes(item.projectName)}
-                      aria-label={favorites.includes(item.projectName) ? `Remove ${item.projectName} from favorites` : `Add ${item.projectName} to favorites`}
                       className={`absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-black/60 ${
                         favorites.includes(item.projectName) ? "text-yellow-400" : "text-white/70"
                       }`}
@@ -213,7 +182,6 @@ export default function ProjectGrid() {
                       </h3>
 
                       <span
-                        aria-label={`Difficulty level: ${item.difficulty}`}
                         className={`rounded-full border px-3 py-1 text-xs font-medium whitespace-nowrap ${
                           item.difficulty === "Beginner"
                             ? "border-green-500/30 bg-green-500/10 text-green-400"
@@ -263,16 +231,6 @@ export default function ProjectGrid() {
                           <FaGithub aria-hidden="true" size={16} />
                         </Link>
                       )}
-
-                      {item.ytLink && (
-                        <Link
-                          href={item.ytLink}
-                          target="_blank"
-                          className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-red-500 hover:text-white"
-                        >
-                          <FaYoutube aria-hidden="true" size={16} />
-                        </Link>
-                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -285,7 +243,6 @@ export default function ProjectGrid() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
               className="mt-12 flex flex-col items-center gap-3"
             >
               <p className="text-sm text-muted-foreground">
@@ -305,12 +262,10 @@ export default function ProjectGrid() {
               </div>
 
               <motion.button
-                id="load-more-projects-btn"
                 onClick={handleLoadMore}
                 disabled={isLoadingMore}
                 whileHover={{ scale: isLoadingMore ? 1 : 1.04 }}
                 whileTap={{ scale: isLoadingMore ? 1 : 0.97 }}
-                aria-label="Load more projects"
                 className="group relative mt-2 flex items-center gap-2.5 rounded-full border border-primary/40 bg-primary/10 px-8 py-3 text-sm font-semibold text-primary backdrop-blur-md shadow-[0_0_20px_-4px] shadow-primary/30 transition-all duration-300 hover:bg-primary/20 hover:border-primary/60 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isLoadingMore ? "Loading…" : "Load More Projects"}
@@ -326,7 +281,7 @@ export default function ProjectGrid() {
         </div>
       )}
 
-      {/* --- Embedded Global Preview Modal Hook Injection --- */}
+      {/* --- Embedded Global Preview Modal Hook Injection (Exclusive to PR #121) --- */}
       <ProjectPreviewModal 
         isOpen={isModalOpen}
         project={activeModalProject}
