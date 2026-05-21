@@ -15,6 +15,8 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import SearchBar from "./search-bar";
+import { ProjectItem } from "@/hooks/usePreviewModal";
+import ProjectPreviewModal from "@/components/project/ProjectPreviewModal";
 
 const PROJECTS_PER_PAGE = 6;
 
@@ -25,9 +27,12 @@ export default function ProjectGrid() {
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
+  // --- Local States for Modal (Replacing Zustand gracefully) ---
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeModalProject, setActiveModalProject] = useState<ProjectItem | null>(null);
+
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favoriteProjects");
-
     if (storedFavorites) {
       setFavorites(JSON.parse(storedFavorites));
     }
@@ -40,15 +45,12 @@ export default function ProjectGrid() {
 
   const toggleFavorite = (projectName: string) => {
     let updatedFavorites: string[];
-
     if (favorites.includes(projectName)) {
       updatedFavorites = favorites.filter((item) => item !== projectName);
     } else {
       updatedFavorites = [...favorites, projectName];
     }
-
     setFavorites(updatedFavorites);
-
     localStorage.setItem("favoriteProjects", JSON.stringify(updatedFavorites));
   };
 
@@ -76,11 +78,24 @@ export default function ProjectGrid() {
 
   const handleLoadMore = () => {
     setIsLoadingMore(true);
-    // Small delay for visual feedback, then reveal next batch
     setTimeout(() => {
       setVisibleCount((prev) => prev + PROJECTS_PER_PAGE);
       setIsLoadingMore(false);
     }, 400);
+  };
+
+  const openQuickView = (item: any) => {
+    const projectData: ProjectItem = {
+      title: item.projectName,
+      description: item.description,
+      github: item.githubLink ?? "#",
+      demo: item.liveLink ?? "#",
+      tags: item.techStack ?? [],
+      features: item.features ?? ["Interactive UI Components", "State Synchronizations"],
+      hooks: item.hooks ?? ["useState", "useEffect"],
+    };
+    setActiveModalProject(projectData);
+    setIsModalOpen(true);
   };
 
   const cardVariants: Variants = {
@@ -105,14 +120,12 @@ export default function ProjectGrid() {
         <button
           onClick={() => setShowFavorites((prev) => !prev)}
           aria-pressed={showFavorites}
-          aria-label={
-            showFavorites ? "Show all projects" : "Show favorite projects only"
-          }
-          className={`flex items-center gap-2 px-4 py-2 rounded-md border ${
+          aria-label={showFavorites ? "Show all projects" : "Show favorite projects only"}
+          className={`flex items-center gap-2 px-4 py-2 rounded-md border cursor-pointer ${
             showFavorites
               ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400"
               : "border-border bg-background text-foreground hover:bg-muted"
-          } transition-colors duration-300 hover:bg-primary/10`}
+          } transition-colors duration-300`}
         >
           <FaBookmark aria-hidden="true" />
           {showFavorites ? "Show All" : "Show Favorites"}
@@ -144,24 +157,25 @@ export default function ProjectGrid() {
                       alt={item.projectName}
                       fill
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw,
-                             (max-width: 1024px) 50vw,
-                             33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       priority={index === 0}
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
+                      {/* Properly Scoped Quick View Button */}
+                      <button
+                        onClick={() => openQuickView(item)}
+                        className="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-indigo-600 border border-indigo-500 shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-indigo-500"
+                      >
+                        👁 Quick Preview
+                      </button>
+                    </div>
+
                     <button
                       onClick={() => toggleFavorite(item.projectName)}
                       aria-pressed={favorites.includes(item.projectName)}
-                      aria-label={
-                        favorites.includes(item.projectName)
-                          ? `Remove ${item.projectName} from favorites`
-                          : `Add ${item.projectName} to favorites`
-                      }
+                      aria-label={favorites.includes(item.projectName) ? `Remove ${item.projectName} from favorites` : `Add ${item.projectName} to favorites`}
                       className={`absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-black/60 ${
-                        favorites.includes(item.projectName)
-                          ? "text-yellow-400"
-                          : "text-white/70"
+                        favorites.includes(item.projectName) ? "text-yellow-400" : "text-white/70"
                       }`}
                     >
                       <FaBookmark aria-hidden="true" />
@@ -250,20 +264,11 @@ export default function ProjectGrid() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="mt-12 flex flex-col items-center gap-3"
             >
-              {/* Progress indicator */}
               <p className="text-sm text-muted-foreground">
-                Showing{" "}
-                <span className="font-semibold text-foreground">
-                  {visibleProjects.length}
-                </span>{" "}
-                of{" "}
-                <span className="font-semibold text-foreground">
-                  {filteredProjects.length}
-                </span>{" "}
-                projects
+                Showing <span className="font-semibold text-foreground">{visibleProjects.length}</span> of{" "}
+                <span className="font-semibold text-foreground">{filteredProjects.length}</span> projects
               </p>
 
-              {/* Thin progress bar */}
               <div className="relative w-48 h-1 rounded-full bg-border overflow-hidden">
                 <motion.div
                   className="absolute inset-y-0 left-0 rounded-full bg-primary"
@@ -275,7 +280,6 @@ export default function ProjectGrid() {
                 />
               </div>
 
-              {/* Load More Button */}
               <motion.button
                 id="load-more-projects-btn"
                 onClick={handleLoadMore}
@@ -283,88 +287,30 @@ export default function ProjectGrid() {
                 whileHover={{ scale: isLoadingMore ? 1 : 1.04 }}
                 whileTap={{ scale: isLoadingMore ? 1 : 0.97 }}
                 aria-label="Load more projects"
-                className={`
-                  group relative mt-2 flex items-center gap-2.5
-                  rounded-full border border-primary/40
-                  bg-primary/10 px-8 py-3
-                  text-sm font-semibold text-primary
-                  backdrop-blur-md
-                  shadow-[0_0_20px_-4px] shadow-primary/30
-                  transition-all duration-300
-                  hover:bg-primary/20 hover:border-primary/60
-                  hover:shadow-[0_0_28px_-4px] hover:shadow-primary/50
-                  disabled:cursor-not-allowed disabled:opacity-60
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-ring
-                `}
+                className="group relative mt-2 flex items-center gap-2.5 rounded-full border border-primary/40 bg-primary/10 px-8 py-3 text-sm font-semibold text-primary backdrop-blur-md shadow-[0_0_20px_-4px] shadow-primary/30 transition-all duration-300 hover:bg-primary/20 hover:border-primary/60 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isLoadingMore ? (
-                  <>
-                    <svg
-                      className="h-4 w-4 animate-spin"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                      />
-                    </svg>
-                    Loading…
-                  </>
-                ) : (
-                  <>
-                    Load More Projects
-                    <FaChevronDown
-                      aria-hidden="true"
-                      className="h-3 w-3 transition-transform duration-300 group-hover:translate-y-0.5"
-                    />
-                  </>
-                )}
+                {isLoadingMore ? "Loading…" : "Load More Projects"}
               </motion.button>
             </motion.div>
-          )}
-
-          {/* All loaded indicator */}
-          {!hasMore && filteredProjects.length > PROJECTS_PER_PAGE && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mt-10 text-center text-sm text-muted-foreground"
-            >
-              ✓ All{" "}
-              <span className="font-semibold text-foreground">
-                {filteredProjects.length}
-              </span>{" "}
-              projects loaded
-            </motion.p>
           )}
         </>
       ) : (
         <div className="flex flex-col items-center justify-center py-16 text-center">
-          <FaSearch
-            aria-hidden="true"
-            className="mb-4 text-4xl text-foreground/50"
-          />
-          <h3 className="text-lg font-semibold">
-            {projectConfig.notFound.title}
-          </h3>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {projectConfig.notFound.description}
-          </p>
+          <FaSearch aria-hidden="true" className="mb-4 text-4xl text-foreground/50" />
+          <h3 className="text-lg font-semibold">{projectConfig.notFound.title}</h3>
+          <p className="mt-1 text-sm text-muted-foreground">{projectConfig.notFound.description}</p>
         </div>
       )}
+
+      {/* --- Embedded Global Preview Modal Root Hook Injection --- */}
+      <ProjectPreviewModal 
+        isOpen={isModalOpen}
+        project={activeModalProject}
+        onClose={() => {
+          setIsModalOpen(false);
+          setActiveModalProject(null);
+        }}
+      />
     </div>
   );
 }
