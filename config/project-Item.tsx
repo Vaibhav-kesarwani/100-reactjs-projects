@@ -32,10 +32,10 @@ export const projectItemConfig: ProjectItems[] = [
   },
   {
     projectName: "Kitchenly",
-    description:"Recipe Manager + Smart Shopping List helps users capture recipes (URL, upload, or manual), standardize ingredients, scale servings, and automatically generate optimized shopping lists grouped by store sections with aggregated quantities—reducing duplicates and making shopping faster and more efficient.",
+    description: "Recipe Manager + Smart Shopping List helps users capture recipes (URL, upload, or manual), standardize ingredients, scale servings, and automatically generate optimized shopping lists grouped by store sections with aggregated quantities—reducing duplicates and making shopping faster and more efficient.",
     projectImage: "kitchenly.png",
     githubLink: "https://github.com/Aarya1402/kitchenly",
-    techStack: ["Next js","Tailwind CSS","PostgreSQL", "Prisma"], 
+    techStack: ["Next js", "Tailwind CSS", "PostgreSQL", "Prisma"],
     difficulty: "Intermediate"
   },
   {
@@ -50,7 +50,7 @@ export const projectItemConfig: ProjectItems[] = [
   },
   {
     projectName: "SplitSmart",
-    description: 
+    description:
       "Split bills equally, by item, or by percentage. Features AI bill parsing, group management, history tracking, and localStorage persistence.",
     projectImage: "splitsmart.png",
     githubLink: "https://github.com/ParthBhuptani/splitsmart",
@@ -64,6 +64,15 @@ export const projectItemConfig: ProjectItems[] = [
     projectImage: "text-cipher.png",
     githubLink: "https://github.com/Reva2473/Text-Cipher",
     liveLink: "https://text-cipher.vercel.app/",
+    techStack: ["React", "Tailwind CSS", "TypeScript"],
+    difficulty: "Beginner",
+  },
+  {
+    projectName: "Unit Converter",
+    description: "A live, two-way interactive utility for converting Temperature, Weight, and Length units instantly.",
+    projectImage: "unit-conv.png",
+    githubLink: "https://github.com/Reva2473/Unit-Converter-utility",
+    liveLink: "https://unit-converter-utility.vercel.app/",
     techStack: ["React", "Tailwind CSS", "TypeScript"],
     difficulty: "Beginner",
   },
