@@ -118,8 +118,12 @@ Add your project details inside the `project-Item.tsx` file.
     githubLink: "github-link",
     liveLink: "live-link", // optional
     ytLink: "yt-link", // optional
-    techStack: ["React js"], // it is ans array ["React js", "Next js", "Tailwind css"]
-    difficulty: "Beginner" // Beginner | Intermediate | Advanced
+    techStack: ["React js"], // it is an array ["React js", "Next js", "Tailwind css"]
+    difficulty: "Beginner", // Beginner | Intermediate | Advanced
+    skills: ["Routing", "State Management"], // Optional: array of skills taught
+    learningPath: ["Frontend Mastery"], // Optional: learning path categories
+    estimatedTime: "2-3 weeks", // Optional: estimated time to complete
+    prerequisites: ["React Basics"] // Optional: prerequisite knowledge
 }
 ```
 ### Difficulty Levels
@@ -131,6 +135,14 @@ Allowed values:
 - `Beginner`
 - `Intermediate`
 - `Advanced`
+
+### Structured Learning Fields (Optional but Recommended)
+
+To make projects more beginner-friendly, please consider adding these structured learning fields:
+- `skills`: A list of core concepts learned (e.g., `["API Fetching", "State Management"]`)
+- `learningPath`: Recommended learning tracks (e.g., `["React Basics", "Fullstack Next.js"]`)
+- `estimatedTime`: Expected time to build (e.g., `"2-3 days"`, `"1 week"`)
+- `prerequisites`: Required knowledge before starting (e.g., `"JavaScript Basics"`)
 
 Ensure:
 
