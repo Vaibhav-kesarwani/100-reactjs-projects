@@ -13,8 +13,21 @@ import {
   FaLink,
   FaSearch,
   FaYoutube,
+  FaClock,
+  FaTags,
+  FaRoute,
+  FaBook,
 } from "react-icons/fa";
 import SearchBar from "./search-bar";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const PROJECTS_PER_PAGE = 6;
 
@@ -136,78 +149,220 @@ export default function ProjectGrid() {
                     transition: { duration: 0.2 },
                   }}
                   layout
-                  className="group relative overflow-hidden rounded-2xl border border-border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
+                  className="flex flex-col h-full group relative overflow-hidden rounded-2xl border border-border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
                 >
-                  <div className="relative aspect-video overflow-hidden">
-                    <Image
-                      src={`/projects/${item.projectImage}`}
-                      alt={item.projectName}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw,
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="cursor-pointer outline-none flex-1 flex flex-col group/card">
+                        <div className="relative aspect-video overflow-hidden shrink-0">
+                          <Image
+                            src={`/projects/${item.projectImage}`}
+                            alt={item.projectName}
+                            fill
+                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                            sizes="(max-width: 640px) 100vw,
                              (max-width: 1024px) 50vw,
                              33vw"
-                      priority={index === 0}
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    <button
-                      onClick={() => toggleFavorite(item.projectName)}
-                      aria-pressed={favorites.includes(item.projectName)}
-                      aria-label={
-                        favorites.includes(item.projectName)
-                          ? `Remove ${item.projectName} from favorites`
-                          : `Add ${item.projectName} to favorites`
-                      }
-                      className={`absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-black/60 ${
-                        favorites.includes(item.projectName)
-                          ? "text-yellow-400"
-                          : "text-white/70"
-                      }`}
-                    >
-                      <FaBookmark aria-hidden="true" />
-                    </button>
-                  </div>
-
-                  <div className="relative flex flex-col gap-4 p-6">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-lg font-semibold tracking-tight text-start">
-                        {item.projectName}
-                      </h3>
-
-                      <span
-                        aria-label={`Difficulty level: ${item.difficulty}`}
-                        className={`rounded-full border px-3 py-1 text-xs font-medium whitespace-nowrap ${
-                          item.difficulty === "Beginner"
-                            ? "border-green-500/30 bg-green-500/10 text-green-400"
-                            : item.difficulty === "Intermediate"
-                              ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400"
-                              : "border-red-500/30 bg-red-500/10 text-red-400"
-                        }`}
-                      >
-                        {item.difficulty}
-                      </span>
-                    </div>
-
-                    <p className="mt-2 text-sm leading-relaxed text-foreground/70 font-medium text-start line-clamp-2">
-                      {item.description}
-                    </p>
-
-                    {item.techStack && (
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {item.techStack.map((tech: string, i: number) => (
-                          <span
-                            key={i}
-                            className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-xs text-muted-foreground"
+                            priority={index === 0}
+                          />
+                          <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              toggleFavorite(item.projectName);
+                            }}
+                            aria-pressed={favorites.includes(item.projectName)}
+                            aria-label={
+                              favorites.includes(item.projectName)
+                                ? `Remove ${item.projectName} from favorites`
+                                : `Add ${item.projectName} to favorites`
+                            }
+                            className={`absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-black/60 ${
+                              favorites.includes(item.projectName)
+                                ? "text-yellow-400"
+                                : "text-white/70"
+                            }`}
                           >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                            <FaBookmark aria-hidden="true" />
+                          </button>
+                        </div>
 
-                    <div className="mt-5 flex items-center gap-3">
+                        <div
+                          className="relative flex flex-col gap-4 p-6 pb-6 flex-1 sm:cursor-pointer cursor-default"
+                          onClick={(e) => {
+                            if (
+                              typeof window !== "undefined" &&
+                              window.innerWidth < 640
+                            ) {
+                              e.stopPropagation();
+                              e.preventDefault();
+                            }
+                          }}
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <h3 className="text-lg font-semibold tracking-tight text-start">
+                              {item.projectName}
+                            </h3>
+
+                            <span
+                              aria-label={`Difficulty level: ${item.difficulty}`}
+                              className={`rounded-full border px-3 py-1 text-xs font-medium whitespace-nowrap ${
+                                item.difficulty === "Beginner"
+                                  ? "border-green-500/30 bg-green-500/10 text-green-400"
+                                  : item.difficulty === "Intermediate"
+                                    ? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400"
+                                    : "border-red-500/30 bg-red-500/10 text-red-400"
+                              }`}
+                            >
+                              {item.difficulty}
+                            </span>
+                          </div>
+
+                          <p className="mt-2 text-sm leading-relaxed text-foreground/70 font-medium text-start line-clamp-2">
+                            {item.description}
+                          </p>
+
+                          {item.techStack && (
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {item.techStack.map((tech: string, i: number) => (
+                                <span
+                                  key={i}
+                                  className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-xs text-muted-foreground"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </DialogTrigger>
+
+                    <DialogContent
+                      className="sm:max-w-[800px] w-[95vw] max-h-[90vh] overflow-y-auto flex flex-col"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <DialogHeader>
+                        <DialogTitle className="text-xl">
+                          {item.projectName}
+                        </DialogTitle>
+                        <DialogDescription className="text-sm mt-1.5">
+                          {item.description}
+                        </DialogDescription>
+                      </DialogHeader>
+
+                      <div className="relative aspect-video w-full overflow-hidden rounded-lg mt-2 border border-border/50">
+                        <Image
+                          src={`/projects/${item.projectImage}`}
+                          alt={item.projectName}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 600px) 100vw, 600px"
+                        />
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-3 mt-4">
+                        {item.liveLink && (
+                          <Link
+                            href={item.liveLink}
+                            target="_blank"
+                            className="flex items-center gap-2 text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-full hover:opacity-90 transition-opacity shadow-sm shadow-primary/20"
+                          >
+                            <FaLink /> Live Preview
+                          </Link>
+                        )}
+                        {item.githubLink && (
+                          <Link
+                            href={item.githubLink}
+                            target="_blank"
+                            className="flex items-center gap-2 text-sm font-medium bg-muted text-foreground px-4 py-2 rounded-full hover:bg-muted/80 transition-colors border border-border"
+                          >
+                            <FaGithub /> Source Code
+                          </Link>
+                        )}
+                        {item.ytLink && (
+                          <Link
+                            href={item.ytLink}
+                            target="_blank"
+                            className="flex items-center gap-2 text-sm font-medium bg-red-500/10 text-red-500 px-4 py-2 rounded-full hover:bg-red-500/20 transition-colors border border-red-500/20"
+                          >
+                            <FaYoutube /> Tutorial
+                          </Link>
+                        )}
+                      </div>
+
+                      {(item.skills ||
+                        item.estimatedTime ||
+                        item.learningPath ||
+                        item.prerequisites) && (
+                        <div className="grid sm:grid-cols-2 gap-4 pt-4 mt-2 border-t border-border/50">
+                          {item.estimatedTime && (
+                            <div className="flex flex-col gap-1.5">
+                              <h4 className="text-sm font-semibold flex items-center gap-2">
+                                <FaClock className="text-muted-foreground" />{" "}
+                                Estimated Time
+                              </h4>
+                              <p className="text-sm text-muted-foreground pl-6">
+                                {item.estimatedTime}
+                              </p>
+                            </div>
+                          )}
+                          {item.learningPath && (
+                            <div className="flex flex-col gap-1.5">
+                              <h4 className="text-sm font-semibold flex items-center gap-2">
+                                <FaRoute className="text-muted-foreground" />{" "}
+                                Learning Path
+                              </h4>
+                              <p className="text-sm text-muted-foreground pl-6">
+                                {item.learningPath.join(" → ")}
+                              </p>
+                            </div>
+                          )}
+                          {item.prerequisites && (
+                            <div className="flex flex-col gap-1.5 sm:col-span-2">
+                              <h4 className="text-sm font-semibold flex items-center gap-2">
+                                <FaBook className="text-muted-foreground" />{" "}
+                                Prerequisites
+                              </h4>
+                              <div className="flex flex-wrap gap-2 pl-6 mt-1">
+                                {item.prerequisites.map((prereq, i) => (
+                                  <span
+                                    key={`modal-prereq-${i}`}
+                                    className="rounded-full border border-border bg-muted/50 px-2.5 py-0.5 text-xs text-muted-foreground"
+                                  >
+                                    {prereq}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {item.skills && (
+                            <div className="flex flex-col gap-1.5 sm:col-span-2">
+                              <h4 className="text-sm font-semibold flex items-center gap-2">
+                                <FaTags className="text-muted-foreground" />{" "}
+                                Skills Taught
+                              </h4>
+                              <div className="flex flex-wrap gap-2 pl-6 mt-1">
+                                {item.skills.map((skill, i) => (
+                                  <span
+                                    key={`modal-skill-${i}`}
+                                    className="rounded-full border border-border bg-muted/50 px-2.5 py-0.5 text-xs text-muted-foreground"
+                                  >
+                                    {skill}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </DialogContent>
+
+                    <div className="mt-auto flex items-center gap-3 p-6 pt-5 relative z-10 border-t border-border/10 pointer-events-auto">
                       {item.liveLink && (
                         <Link
+                          onClick={(e) => e.stopPropagation()}
                           href={item.liveLink}
                           target="_blank"
                           className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-muted"
@@ -218,6 +373,7 @@ export default function ProjectGrid() {
 
                       {item.githubLink && (
                         <Link
+                          onClick={(e) => e.stopPropagation()}
                           href={item.githubLink}
                           target="_blank"
                           className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-muted"
@@ -228,6 +384,7 @@ export default function ProjectGrid() {
 
                       {item.ytLink && (
                         <Link
+                          onClick={(e) => e.stopPropagation()}
                           href={item.ytLink}
                           target="_blank"
                           className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background transition-all duration-300 hover:scale-110 hover:bg-red-500 hover:text-white"
@@ -236,7 +393,7 @@ export default function ProjectGrid() {
                         </Link>
                       )}
                     </div>
-                  </div>
+                  </Dialog>
                 </motion.div>
               ))}
             </AnimatePresence>

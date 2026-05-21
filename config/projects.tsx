@@ -9,6 +9,10 @@ export interface ProjectItems {
   ytLink?: string;
   techStack: string[];
   difficulty: string;
+  skills?: string[];
+  learningPath?: string[];
+  estimatedTime?: string;
+  prerequisites?: string[];
 }
 
 interface Project {
