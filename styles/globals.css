@@ -315,6 +315,50 @@
     background-color: color-mix(in oklch, var(--primary) 15%, transparent);
   }
 
+  .activity-lane-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .activity-lane-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .activity-lane-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .activity-lane-scrollbar::-webkit-scrollbar {
+      display: block;
+      height: 0.6rem;
+    }
+
+    .activity-lane-scrollbar::-webkit-scrollbar-track {
+      border-radius: 9999px;
+      background-color: color-mix(in oklch, var(--input) 72%, transparent);
+    }
+
+    .activity-lane-scrollbar::-webkit-scrollbar-thumb {
+      border: 1px solid var(--card);
+      border-radius: 9999px;
+      background-color: color-mix(
+        in oklch,
+        var(--border) 80%,
+        var(--primary) 20%
+      );
+    }
+
+    .activity-lane-scrollbar:hover::-webkit-scrollbar-thumb {
+      background-color: color-mix(
+        in oklch,
+        var(--border) 64%,
+        var(--primary) 36%
+      );
+    }
+  }
+
   @keyframes nav-underline {
     0% {
       transform: scaleX(0.2);

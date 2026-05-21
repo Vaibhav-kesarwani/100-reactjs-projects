@@ -254,7 +254,7 @@ export function ActivityLane({
 
       <div
         aria-label={ariaLabel}
-        className="overflow-x-auto overscroll-x-contain pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="activity-lane-scrollbar overflow-x-auto overscroll-x-contain pb-2 md:pb-3"
       >
         <div className="flex snap-x snap-mandatory gap-4 pr-4 sm:pr-6">
           {children}
