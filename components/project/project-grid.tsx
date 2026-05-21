@@ -31,10 +31,10 @@ export default function ProjectGrid() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeModalProject, setActiveModalProject] = useState<ProjectItem | null>(null);
 
-  // --- [ISSUE #106]: Scroll Progress Bar State ---
+  // --- Scroll Progress Bar State ---
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // --- [ISSUE #106]: Scroll Event Listener Dynamic Logic ---
+  // --- Scroll Event Listener Dynamic Logic ---
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -131,7 +131,7 @@ export default function ProjectGrid() {
 
   return (
     <div className="mt-15">
-      {/* --- [ISSUE #106]: Fixed Top Floating Scroll Progress Bar Sheet Indicator --- */}
+      {/* --- Fixed Top Floating Scroll Progress Bar Sheet Indicator --- */}
       <div className="fixed top-0 left-0 w-full h-[4px] bg-transparent z-[100] pointer-events-none">
         <div 
           className="h-full bg-emerald-500 shadow-[0_0_10px_#10b981] transition-all duration-75 ease-out"
