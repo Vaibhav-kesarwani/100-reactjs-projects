@@ -27,9 +27,26 @@ export default function ProjectGrid() {
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  // --- Local States for Modal (Replacing Zustand gracefully) ---
+  // --- Local States for Preview Modal ---
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeModalProject, setActiveModalProject] = useState<ProjectItem | null>(null);
+
+  // --- [ISSUE #106]: Scroll Progress Bar State ---
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // --- [ISSUE #106]: Scroll Event Listener Dynamic Logic ---
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem("favoriteProjects");
@@ -114,6 +131,14 @@ export default function ProjectGrid() {
 
   return (
     <div className="mt-15">
+      {/* --- [ISSUE #106]: Fixed Top Floating Scroll Progress Bar Sheet Indicator --- */}
+      <div className="fixed top-0 left-0 w-full h-[4px] bg-transparent z-[100] pointer-events-none">
+        <div 
+          className="h-full bg-emerald-500 shadow-[0_0_10px_#10b981] transition-all duration-75 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       <div className="mt-6 mb-8 flex items-center gap-4">
@@ -161,7 +186,6 @@ export default function ProjectGrid() {
                       priority={index === 0}
                     />
                     <div className="absolute inset-0 bg-black/60 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-center justify-center">
-                      {/* Properly Scoped Quick View Button */}
                       <button
                         onClick={() => openQuickView(item)}
                         className="cursor-pointer flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-indigo-600 border border-indigo-500 shadow-xl opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-indigo-500"
@@ -302,7 +326,7 @@ export default function ProjectGrid() {
         </div>
       )}
 
-      {/* --- Embedded Global Preview Modal Root Hook Injection --- */}
+      {/* --- Embedded Global Preview Modal Hook Injection --- */}
       <ProjectPreviewModal 
         isOpen={isModalOpen}
         project={activeModalProject}
