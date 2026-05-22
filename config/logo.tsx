@@ -6,8 +6,8 @@ interface Logo {
 }
 
 export const logoConfig: Logo = {
-  logoImage: "/logo/logo.png",
-  logoAlt: "React 100",
+  logoImage: "/logo/logo.svg",
+  logoAlt: "100+ ReactJS Projects Logo",
   logohref: "https://vaibhavkesarwani.vercel.app/",
   name: "React JS",
 };
