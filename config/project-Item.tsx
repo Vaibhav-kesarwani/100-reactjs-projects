@@ -69,4 +69,14 @@ export const projectItemConfig: ProjectItems[] = [
     techStack: ["React", "Tailwind CSS", "TypeScript"],
     difficulty: "Beginner",
   },
+  {
+    projectName: "Resume Analyzer",
+    description:
+      "AI-powered resume analysis that extracts skills, experience, and job fit insights to help you improve your application.",
+    projectImage: "resume-analyzer.png",
+    githubLink: "https://github.com/Nazeem0/resume_analyzer",
+    liveLink: "https://resume-analyzer-mauve-pi.vercel.app/",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "AI"],
+    difficulty: "Beginner",
+  },
 ];
