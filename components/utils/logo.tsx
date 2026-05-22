@@ -7,17 +7,16 @@ export default function Logo() {
     <Link
       href={logoConfig.logohref}
       target="_blank"
-      className="flex items-center justify-center gap-3"
+      className="flex items-center justify-center w-40 h-12 overflow-hidden relative"
     >
       <Image
         src={logoConfig.logoImage}
         alt={logoConfig.logoAlt}
-        width={60}
-        height={60}
+        width={360}
+        height={40}
         priority
-        className="size-10 rounded-full border border-border object-cover"
+        className="object-contain h-20 w-auto min-w-[110px]"
       />
-      <h2 className="text-lg md:text-xl font-semibold">{logoConfig.name}</h2>
     </Link>
   );
 }

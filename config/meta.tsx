@@ -134,9 +134,9 @@ export function generateMetadata(pathname: string) {
     title: pageMeta.title,
     description: pageMeta.description,
     icons: {
-      icon: "/logo/logo.png",
-      shortcut: "/logo/logo.png",
-      apple: "/logo/logo.png",
+      icon: "/logo/favicon.",
+      shortcut: "/logo/favicon.ico",
+      apple: "/logo/favicon.ico",
     },
     keywords: pageMeta.keywords?.join(", "),
     authors: [{ name: siteConfig.author.name }],
