@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-4 left-1/2 z-50 w-[95%] max-w-6xl -translate-x-1/2
-      flex items-center justify-between
+      flex items-center justify-between transition-all duration-300 ease-out
       ${open ? "rounded-t-2xl" : "rounded-2xl"} md:rounded-2xl border border-border
       backdrop-blur-md
       px-6 py-3 shadow-lg`}

@@ -12,16 +12,20 @@ interface NavMenu {
 export default function NavMenu({ open, setOpen }: NavMenu) {
   const pathname = usePathname();
 
-  if (!open) return null;
 
   return (
     <ul
       id="mobile-menu"
       aria-label="Mobile navigation menu"
-      className="absolute top-full left-1/2 w-full max-w-sm
-      -translate-x-1/2 rounded-b-2xl border border-border
-      bg-background/95 backdrop-blur-md shadow-lg
-      md:hidden flex flex-col items-start justify-center gap-2 p-4"
+      className={`absolute top-full left-1/2 w-full max-w-sm
+-translate-x-1/2 rounded-b-2xl border border-border
+bg-background/95 backdrop-blur-md shadow-lg overflow-hidden
+md:hidden flex flex-col items-start gap-2 px-4
+transition-all duration-300 ease-in-out origin-top
+${open
+          ? "max-h-96 opacity-100 py-4 translate-y-0"
+          : "max-h-0 opacity-0 py-0 -translate-y-3 pointer-events-none border-transparent"
+        }`}
     >
       {navbarConfig.items.map((item) => {
         const isActive = pathname === item.href;
