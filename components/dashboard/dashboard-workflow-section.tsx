@@ -27,7 +27,9 @@ export function DashboardWorkflowSection() {
               Contribution workflow
             </CardTitle>
             <CardDescription className="mt-2 max-w-3xl text-sm leading-6">
-              Follow the sequence from issue discovery to review-ready pull request. The arrows make the order explicit for first-time contributors.
+              Follow the sequence from issue discovery to review-ready pull
+              request. The arrows make the order explicit for first-time
+              contributors.
             </CardDescription>
           </div>
           <Badge variant="outline" className="rounded-full px-3 py-1 text-xs">
@@ -51,7 +53,9 @@ export function DashboardWorkflowSection() {
                       {index + 1}
                     </span>
                     <div>
-                      <h3 className="text-sm font-semibold text-foreground">{step.title}</h3>
+                      <h3 className="text-sm font-semibold text-foreground">
+                        {step.title}
+                      </h3>
                       <p className="mt-2 text-sm leading-6 text-muted-foreground">
                         {step.description}
                       </p>

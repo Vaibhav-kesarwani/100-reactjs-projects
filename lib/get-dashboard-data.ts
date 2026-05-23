@@ -126,17 +126,23 @@ async function fetchPullRequests() {
 }
 
 async function fetchContributorsForDashboard() {
-  return fetchGitHubJson<GitHubContributor[]>(`/repos/${REPOSITORY}/contributors`);
+  return fetchGitHubJson<GitHubContributor[]>(
+    `/repos/${REPOSITORY}/contributors`,
+  );
 }
 
 async function buildDashboardData(): Promise<DashboardData> {
-  const [repositoryResult, issuesResult, pullRequestsResult, contributorsResult] =
-    await Promise.allSettled([
-      fetchRepository(),
-      fetchIssues(),
-      fetchPullRequests(),
-      fetchContributorsForDashboard(),
-    ]);
+  const [
+    repositoryResult,
+    issuesResult,
+    pullRequestsResult,
+    contributorsResult,
+  ] = await Promise.allSettled([
+    fetchRepository(),
+    fetchIssues(),
+    fetchPullRequests(),
+    fetchContributorsForDashboard(),
+  ]);
 
   logRejectedResult("repository", repositoryResult);
   logRejectedResult("issues", issuesResult);

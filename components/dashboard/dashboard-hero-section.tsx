@@ -34,7 +34,9 @@ function HeroStat({
         formatter={integerNumberFormatter.format}
         className="mt-2 block text-xl font-semibold tracking-tight sm:mt-3 sm:text-3xl"
       />
-      <p className="mt-2 hidden text-sm leading-6 text-muted-foreground sm:block">{description}</p>
+      <p className="mt-2 hidden text-sm leading-6 text-muted-foreground sm:block">
+        {description}
+      </p>
     </div>
   );
 }
@@ -44,7 +46,10 @@ export function DashboardHeroSection({ data }: { data: DashboardData }) {
     <Card className="border border-sky-200/70 bg-linear-to-br from-white via-sky-50/80 to-emerald-50/75 shadow-[0_32px_90px_-54px_rgba(59,130,246,0.32)] backdrop-blur-xl dark:border-border/70 dark:from-card/85 dark:via-card/85 dark:to-card/85 dark:shadow-none">
       <CardHeader className="gap-5 pb-2 text-center lg:text-left">
         <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-          <Badge variant="outline" className="rounded-full px-3 py-1 text-xs uppercase tracking-[0.16em]">
+          <Badge
+            variant="outline"
+            className="rounded-full px-3 py-1 text-xs uppercase tracking-[0.16em]"
+          >
             Live contribution hub
           </Badge>
         </div>
@@ -52,7 +57,9 @@ export function DashboardHeroSection({ data }: { data: DashboardData }) {
         <div className="space-y-4">
           <CardTitle className="text-4xl font-bold leading-tight md:text-6xl">
             Contributor{" "}
-            <AuroraText colors={["#22d3ee", "#3b82f6", "#6366f1", "#a855f7", "#ec4899"]}>
+            <AuroraText
+              colors={["#22d3ee", "#3b82f6", "#6366f1", "#a855f7", "#ec4899"]}
+            >
               Dashboard
             </AuroraText>
           </CardTitle>

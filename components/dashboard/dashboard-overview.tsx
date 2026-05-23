@@ -6,11 +6,7 @@ import { DashboardActivityFeed } from "./dashboard-activity-feed";
 import { DashboardHeroSection } from "./dashboard-hero-section";
 import { DashboardLabelSignals } from "./dashboard-label-signals";
 import { DashboardMetricsSection } from "./dashboard-metrics-section";
-import {
-  DashboardBackdrop,
-  Reveal,
-  getTopLabels,
-} from "./dashboard-shared";
+import { DashboardBackdrop, Reveal, getTopLabels } from "./dashboard-shared";
 import { DashboardWorkflowSection } from "./dashboard-workflow-section";
 
 export default function DashboardOverview({ data }: { data: DashboardData }) {

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import type { DashboardData } from "@/types/github";
 import { motion, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
@@ -32,7 +28,13 @@ function isExternalLink(href: string) {
   return href.startsWith("http://") || href.startsWith("https://");
 }
 
-function MetricCard({ title, value, description, href, icon: Icon }: MetricCardItem) {
+function MetricCard({
+  title,
+  value,
+  description,
+  href,
+  icon: Icon,
+}: MetricCardItem) {
   const external = isExternalLink(href);
   const shouldReduceMotion = useReducedMotion();
 
@@ -57,7 +59,9 @@ function MetricCard({ title, value, description, href, icon: Icon }: MetricCardI
               <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground sm:text-sm">{title}</p>
+              <p className="text-xs text-muted-foreground sm:text-sm">
+                {title}
+              </p>
               <AnimatedCounter
                 value={value}
                 className="mt-1 block text-2xl font-semibold tracking-tight sm:mt-2 sm:text-3xl"
@@ -65,7 +69,9 @@ function MetricCard({ title, value, description, href, icon: Icon }: MetricCardI
             </div>
           </CardHeader>
           <CardContent className="relative hidden sm:block">
-            <p className="text-sm leading-6 text-muted-foreground">{description}</p>
+            <p className="text-sm leading-6 text-muted-foreground">
+              {description}
+            </p>
           </CardContent>
         </Card>
       </Link>
@@ -78,42 +84,48 @@ export function DashboardMetricsSection({ data }: { data: DashboardData }) {
     {
       title: "Open issues",
       value: data.issues.totalCount,
-      description: "Tasks available for triage, fixes, feature work, and documentation updates.",
+      description:
+        "Tasks available for triage, fixes, feature work, and documentation updates.",
       href: data.links.issues,
       icon: FolderKanban,
     },
     {
       title: "Open pull requests",
       value: data.pullRequests.totalCount,
-      description: "Changes currently moving through review, feedback, and merge readiness.",
+      description:
+        "Changes currently moving through review, feedback, and merge readiness.",
       href: data.links.pulls,
       icon: GitPullRequest,
     },
     {
       title: "Contributors",
       value: data.contributorCount,
-      description: "Developers already active in the repository and visible on the leaderboard.",
+      description:
+        "Developers already active in the repository and visible on the leaderboard.",
       href: data.links.contributors,
       icon: Users,
     },
     {
       title: "Projects",
       value: data.totalProjects,
-      description: "Curated React and Next.js project entries available to explore and extend.",
+      description:
+        "Curated React and Next.js project entries available to explore and extend.",
       href: data.links.projects,
       icon: FolderGit2,
     },
     {
       title: "Stars",
       value: data.repo?.stargazers_count ?? null,
-      description: "Community attention around the repository and the project catalog.",
+      description:
+        "Community attention around the repository and the project catalog.",
       href: data.links.stargazers,
       icon: Star,
     },
     {
       title: "Forks",
       value: data.repo?.forks_count ?? null,
-      description: "Active repository copies used by contributors to build and submit changes.",
+      description:
+        "Active repository copies used by contributors to build and submit changes.",
       href: data.links.network,
       icon: GitFork,
     },

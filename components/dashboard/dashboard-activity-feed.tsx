@@ -63,11 +63,17 @@ export function DashboardActivityFeed({
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs">
+            <Badge
+              variant="secondary"
+              className="rounded-full px-3 py-1 text-xs"
+            >
               {totalCount === null ? "Live data pending" : `${totalCount} open`}
             </Badge>
             {previewItems.length > 0 && (
-              <Badge variant="outline" className="rounded-full px-3 py-1 text-xs">
+              <Badge
+                variant="outline"
+                className="rounded-full px-3 py-1 text-xs"
+              >
                 Showing {previewItems.length} latest
               </Badge>
             )}
@@ -88,7 +94,11 @@ export function DashboardActivityFeed({
         {previewItems.length > 0 ? (
           <ActivityLane
             ariaLabel={`${title} preview`}
-            hintText={type === "issue" ? "Swipe through issue cards" : "Swipe through pull request cards"}
+            hintText={
+              type === "issue"
+                ? "Swipe through issue cards"
+                : "Swipe through pull request cards"
+            }
           >
             {previewItems.map((item) => (
               <motion.div
@@ -108,7 +118,10 @@ export function DashboardActivityFeed({
                   <div className="relative">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                        <Badge variant="outline" className="rounded-full px-2.5 py-0.5 text-[11px]">
+                        <Badge
+                          variant="outline"
+                          className="rounded-full px-2.5 py-0.5 text-[11px]"
+                        >
                           #{item.number}
                         </Badge>
                         <span className="inline-flex items-center gap-1">
@@ -119,11 +132,16 @@ export function DashboardActivityFeed({
                           )}
                           {type === "issue" ? "Issue" : "Pull request"}
                         </span>
-                        {type === "pull-request" && "draft" in item && item.draft && (
-                          <Badge variant="secondary" className="rounded-full px-2 py-0.5 text-[11px]">
-                            Draft
-                          </Badge>
-                        )}
+                        {type === "pull-request" &&
+                          "draft" in item &&
+                          item.draft && (
+                            <Badge
+                              variant="secondary"
+                              className="rounded-full px-2 py-0.5 text-[11px]"
+                            >
+                              Draft
+                            </Badge>
+                          )}
                       </div>
                       <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-muted-foreground" />
                     </div>
@@ -171,7 +189,8 @@ export function DashboardActivityFeed({
           </ActivityLane>
         ) : (
           <div className="rounded-2xl border border-dashed border-border/70 bg-background/40 p-5 text-sm leading-6 text-muted-foreground">
-            Live GitHub activity is temporarily unavailable. Use the board link above to inspect the latest issue and PR state directly on GitHub.
+            Live GitHub activity is temporarily unavailable. Use the board link
+            above to inspect the latest issue and PR state directly on GitHub.
           </div>
         )}
       </CardContent>

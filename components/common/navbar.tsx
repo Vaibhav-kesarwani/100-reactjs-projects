@@ -26,11 +26,11 @@ export default function Navbar() {
         <ModeToggle />
 
         <Link
-  href={"https://github.com/Vaibhav-kesarwani/100-reactjs-projects"}
-  target="_blank"
-  aria-label="View GitHub repository (opens in new tab)"
-  className="hidden md:block border border-border p-2 rounded-lg"
->
+          href={"https://github.com/Vaibhav-kesarwani/100-reactjs-projects"}
+          target="_blank"
+          aria-label="View GitHub repository (opens in new tab)"
+          className="hidden md:block border border-border p-2 rounded-lg"
+        >
           <GitHubStarsAnimation
             maxAvatars={3}
             owner="Vaibhav-kesarwani"
@@ -40,12 +40,12 @@ export default function Navbar() {
         </Link>
 
         <button
-  className="md:hidden"
-  onClick={() => setOpen(!open)}
-  aria-label="Toggle navigation menu"
-  aria-expanded={open}
-  aria-controls="mobile-menu"
->
+          className="md:hidden"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+        >
           {open ? (
             <X size={22} className="text-foreground/50" />
           ) : (

@@ -240,7 +240,11 @@
     height: 100%;
     border-radius: 0.75rem;
     background:
-      radial-gradient(circle at 50% 100%, rgba(52, 211, 153, 0.18), transparent 68%),
+      radial-gradient(
+        circle at 50% 100%,
+        rgba(52, 211, 153, 0.18),
+        transparent 68%
+      ),
       linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 80%);
     opacity: 0;
     transform: scale(0.96);
@@ -291,7 +295,8 @@
   .nav-link[data-active="true"] {
     color: var(--foreground);
     background-color: color-mix(in oklch, var(--primary) 10%, transparent);
-    box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--primary) 18%, transparent);
+    box-shadow: inset 0 0 0 1px
+      color-mix(in oklch, var(--primary) 18%, transparent);
   }
 
   .nav-link[data-active="true"]::before {
@@ -328,7 +333,9 @@
     }
     100% {
       text-shadow: 0 0 10px color-mix(in oklch, var(--primary) 30%, transparent);
-      filter: drop-shadow(0 0 10px color-mix(in oklch, var(--primary) 26%, transparent));
+      filter: drop-shadow(
+        0 0 10px color-mix(in oklch, var(--primary) 26%, transparent)
+      );
     }
   }
 

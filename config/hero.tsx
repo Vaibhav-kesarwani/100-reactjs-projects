@@ -65,23 +65,26 @@ export const heroConfig: Hero = {
   ],
   categoryTitle: {
     highlight: "Project",
-    normal: "Categories"
+    normal: "Categories",
   },
   categoryCards: [
     {
       titleLine1: "Beginner",
       titleLine2: "Projects",
-      description: "Start your journey with fundamental React concepts, basic components, and simple state management.",
+      description:
+        "Start your journey with fundamental React concepts, basic components, and simple state management.",
     },
     {
       titleLine1: "Intermediate",
       titleLine2: "Projects",
-      description: "Deepen your skills with API integrations, complex hooks, and custom routing mechanisms.",
+      description:
+        "Deepen your skills with API integrations, complex hooks, and custom routing mechanisms.",
     },
     {
       titleLine1: "Advanced",
       titleLine2: "Projects",
-      description: "Master React with full-stack integrations, performance optimization, and advanced architectures.",
+      description:
+        "Master React with full-stack integrations, performance optimization, and advanced architectures.",
     },
   ],
 };

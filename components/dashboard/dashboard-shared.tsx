@@ -27,7 +27,9 @@ export function formatRelativeTime(value: string) {
   return formatDistanceToNow(new Date(value), { addSuffix: true });
 }
 
-export function getTopLabels(items: ActivityItem[]): Array<GitHubLabel & { count: number }> {
+export function getTopLabels(
+  items: ActivityItem[],
+): Array<GitHubLabel & { count: number }> {
   const labels = new Map<string, GitHubLabel & { count: number }>();
 
   items.forEach((item) => {
@@ -150,7 +152,10 @@ export function DashboardBackdrop() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+    >
       <motion.div
         className="absolute left-1/2 top-6 h-80 w-[min(72rem,92vw)] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2),transparent_60%)] blur-3xl dark:bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.18),transparent_60%)]"
         animate={
@@ -192,7 +197,13 @@ export function DashboardBackdrop() {
   );
 }
 
-export function AnimatedFlame({ className, delay = 0 }: { className?: string; delay?: number }) {
+export function AnimatedFlame({
+  className,
+  delay = 0,
+}: {
+  className?: string;
+  delay?: number;
+}) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -245,7 +256,9 @@ export function ActivityLane({
         aria-label={ariaLabel}
         className="overflow-x-auto overscroll-x-contain pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        <div className="flex snap-x snap-mandatory gap-4 pr-4 sm:pr-6">{children}</div>
+        <div className="flex snap-x snap-mandatory gap-4 pr-4 sm:pr-6">
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -243,10 +243,10 @@ export default function GitHubStarsAnimation({
                 shouldReduceMotion
                   ? { opacity: 1 }
                   : {
-                    opacity: 1,
-                    scale: 1,
-                    x: 0,
-                  }
+                      opacity: 1,
+                      scale: 1,
+                      x: 0,
+                    }
               }
               aria-label={`${stargazer.login}'s GitHub profile`}
               className={cn(
@@ -258,10 +258,10 @@ export default function GitHubStarsAnimation({
                 shouldReduceMotion
                   ? { opacity: 1 }
                   : {
-                    opacity: 0,
-                    scale: 0.8,
-                    x: -20,
-                  }
+                      opacity: 0,
+                      scale: 0.8,
+                      x: -20,
+                    }
               }
               key={stargazer.login}
               rel="noopener noreferrer"
@@ -273,10 +273,10 @@ export default function GitHubStarsAnimation({
                 shouldReduceMotion
                   ? { duration: 0 }
                   : {
-                    duration: TRANSITION_DURATION,
-                    delay: index * STAGGER_DELAY,
-                    ease: EASE_OUT_CUBIC,
-                  }
+                      duration: TRANSITION_DURATION,
+                      delay: index * STAGGER_DELAY,
+                      ease: EASE_OUT_CUBIC,
+                    }
               }
               whileHover={shouldReduceMotion ? {} : { scale: 1.1, zIndex: 20 }}
             >
@@ -304,9 +304,9 @@ export default function GitHubStarsAnimation({
           shouldReduceMotion
             ? { duration: 0 }
             : {
-              duration: TRANSITION_DURATION,
-              ease: EASE_OUT_CUBIC,
-            }
+                duration: TRANSITION_DURATION,
+                ease: EASE_OUT_CUBIC,
+              }
         }
       >
         <Star className="h-4 w-4 fill-current" />
@@ -321,18 +321,15 @@ export default function GitHubStarsAnimation({
             shouldReduceMotion
               ? { duration: 0 }
               : {
-                duration: 0.3,
-                ease: EASE_OUT_CUBIC,
-              }
+                  duration: 0.3,
+                  ease: EASE_OUT_CUBIC,
+                }
           }
         >
           {countValue}
         </motion.span>
         <span
-          className={cn(
-            "text-foreground/70 text-sm",
-            COUNT_LABEL_WIDTH_CLASS,
-          )}
+          className={cn("text-foreground/70 text-sm", COUNT_LABEL_WIDTH_CLASS)}
         >
           {countLabel}
         </span>

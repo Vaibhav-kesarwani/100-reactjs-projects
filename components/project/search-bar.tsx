@@ -13,13 +13,13 @@ export default function SearchBar({
       <div className="relative w-full max-w-2xl">
         <div className="group relative">
           <FaSearch
-  aria-hidden="true"
-  className="z-10 pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 size-4"
-/>
-        
-        <label htmlFor="project-search" className="sr-only">
-  Search projects
-</label>
+            aria-hidden="true"
+            className="z-10 pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 size-4"
+          />
+
+          <label htmlFor="project-search" className="sr-only">
+            Search projects
+          </label>
           <input
             id="project-search"
             type="text"

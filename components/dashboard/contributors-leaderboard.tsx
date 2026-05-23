@@ -40,7 +40,8 @@ export function ContributorsLeaderboard({
               Contributors leaderboard
             </CardTitle>
             <CardDescription className="mt-2 text-sm leading-6">
-              Top {LEADERBOARD_LIMIT} contributors ranked by public GitHub contributions.
+              Top {LEADERBOARD_LIMIT} contributors ranked by public GitHub
+              contributions.
             </CardDescription>
           </div>
           <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs">
@@ -86,10 +87,16 @@ export function ContributorsLeaderboard({
                       #{rank}
                     </span>
                     {rank <= 3 && (
-                      <AnimatedFlame className="absolute -right-2 -top-2" delay={index * 0.12} />
+                      <AnimatedFlame
+                        className="absolute -right-2 -top-2"
+                        delay={index * 0.12}
+                      />
                     )}
                     {isLeader && (
-                      <AnimatedFlame className="absolute -left-2 bottom-0" delay={0.3} />
+                      <AnimatedFlame
+                        className="absolute -left-2 bottom-0"
+                        delay={0.3}
+                      />
                     )}
                   </div>
 
@@ -98,7 +105,9 @@ export function ContributorsLeaderboard({
                       {contributor.login}
                     </p>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      {isLeader ? "Top performer" : `${getOrdinalLabel(rank)} ranked contributor`}
+                      {isLeader
+                        ? "Top performer"
+                        : `${getOrdinalLabel(rank)} ranked contributor`}
                     </p>
                   </div>
 
@@ -118,7 +127,8 @@ export function ContributorsLeaderboard({
           })
         ) : (
           <div className="rounded-2xl border border-dashed border-border/70 bg-white/60 p-4 text-sm leading-6 text-muted-foreground dark:bg-background/35">
-            Contributor ranking is temporarily unavailable. Use the contributors page to inspect the latest public leaderboard directly.
+            Contributor ranking is temporarily unavailable. Use the contributors
+            page to inspect the latest public leaderboard directly.
           </div>
         )}
 

@@ -23,7 +23,8 @@ export function DashboardLabelSignals({
           Active label signals
         </CardTitle>
         <CardDescription className="text-sm leading-6">
-          The most visible labels across the currently previewed issue and PR queue.
+          The most visible labels across the currently previewed issue and PR
+          queue.
         </CardDescription>
       </CardHeader>
       <CardContent className="pt-6">
@@ -46,7 +47,8 @@ export function DashboardLabelSignals({
           </div>
         ) : (
           <p className="text-sm leading-6 text-muted-foreground">
-            Label insights will appear here as soon as GitHub activity data is available.
+            Label insights will appear here as soon as GitHub activity data is
+            available.
           </p>
         )}
       </CardContent>

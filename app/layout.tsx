@@ -34,7 +34,6 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-
             <FluidCursor />
             <TooltipProvider>
               <Container className="min-h-screen py-6">

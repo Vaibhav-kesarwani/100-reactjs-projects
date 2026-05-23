@@ -10,7 +10,9 @@ export default async function ContributorGrid() {
   if (contributors.length === 0) {
     return (
       <div className="mt-20 rounded-3xl border border-dashed border-border/70 bg-background/60 p-6 text-left text-sm leading-6 text-muted-foreground shadow-sm backdrop-blur-sm">
-        Contributor data is temporarily unavailable. GitHub rate limits or a transient fetch failure can delay the public leaderboard. Please try again shortly.
+        Contributor data is temporarily unavailable. GitHub rate limits or a
+        transient fetch failure can delay the public leaderboard. Please try
+        again shortly.
       </div>
     );
   }
