@@ -69,4 +69,13 @@ export const projectItemConfig: ProjectItems[] = [
     techStack: ["React", "Tailwind CSS", "TypeScript"],
     difficulty: "Beginner",
   },
+  {
+    projectName: "Unit Converter",
+    description: "A live, two-way interactive utility for converting Temperature, Weight, and Length units instantly.",
+    projectImage: "unit-conv.png",
+    githubLink: "https://github.com/Reva2473/Unit-Converter-utility",
+    liveLink: "https://unit-converter-utility.vercel.app/",
+    techStack: ["React", "Tailwind CSS", "TypeScript"],
+    difficulty: "Beginner",
+  },
 ];
