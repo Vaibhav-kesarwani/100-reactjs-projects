@@ -1,5 +1,6 @@
 {
   "name": "100-reactjs-projects",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -53,6 +54,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
