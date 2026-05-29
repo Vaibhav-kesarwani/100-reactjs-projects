@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
-      pull-requests: read
+      pull-requests: write
 
     steps:
       - name: Sync linked issue labels or clean up unmerged pull requests
