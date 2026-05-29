@@ -1,0 +1,155 @@
+name: Sync linked issue labels
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, ready_for_review, closed]
+
+jobs:
+  sync-linked-issue-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Sync linked issue labels or clean up unmerged pull requests
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const action = context.payload.action;
+            const pullRequest = context.payload.pull_request;
+            const pullRequestNumber = pullRequest.number;
+
+            const escapeRegex = (value) =>
+              value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+            const getSection = (content, heading) => {
+              const escapedHeading = escapeRegex(heading);
+              const regex = new RegExp(
+                `## ${escapedHeading}\\r?\\n([\\s\\S]*?)(?=\\r?\\n## |$)`,
+                'i'
+              );
+              const match = content.match(regex);
+
+              return match ? match[1].trim() : '';
+            };
+
+            if (action === 'closed' && !pullRequest.merged) {
+              await github.rest.issues.removeAllLabels({
+                owner,
+                repo,
+                issue_number: pullRequestNumber
+              });
+
+              console.log(
+                `Removed all labels from unmerged pull request #${pullRequestNumber}.`
+              );
+              return;
+            }
+
+            if (action === 'closed' && pullRequest.merged) {
+              console.log(`Pull request #${pullRequestNumber} was merged. Keeping its labels.`);
+              return;
+            }
+
+            const linkedIssuesSection = getSection(pullRequest.body || '', 'Linked issues');
+            const sourceText = linkedIssuesSection || [pullRequest.title, pullRequest.body]
+              .filter(Boolean)
+              .join('\n');
+
+            const sameRepoPath = escapeRegex(`${owner}/${repo}`);
+            const closingIssuePattern = new RegExp(
+              `\\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\\s*:?\\s*(?:https?:\\/\\/github\\.com\\/${sameRepoPath}\\/issues\\/|${sameRepoPath}#|#)(\\d+)`,
+              'gi'
+            );
+
+            const issueNumbers = [
+              ...new Set(
+                [...sourceText.matchAll(closingIssuePattern)]
+                  .map((match) => Number(match[1]))
+                  .filter((issueNumber) => Number.isInteger(issueNumber))
+              )
+            ];
+
+            if (!issueNumbers.length) {
+              console.log('No linked issue found in the pull request body. Skipping label sync.');
+              return;
+            }
+
+            const pullRequestIssue = await github.rest.issues.get({
+              owner,
+              repo,
+              issue_number: pullRequestNumber
+            });
+
+            const existingPullRequestLabels = new Set(
+              (pullRequestIssue.data.labels || []).map((label) => label.name.toLowerCase())
+            );
+            const syncedLabelsByName = new Map();
+
+            for (const issueNumber of issueNumbers) {
+              let issueResponse;
+
+              try {
+                issueResponse = await github.rest.issues.get({
+                  owner,
+                  repo,
+                  issue_number: issueNumber
+                });
+              } catch (error) {
+                if (error.status === 404) {
+                  console.log(`Issue #${issueNumber} was not found. Skipping it.`);
+                  continue;
+                }
+
+                throw error;
+              }
+
+              if (issueResponse.data.pull_request) {
+                console.log(`#${issueNumber} is a pull request, not an issue. Skipping it.`);
+                continue;
+              }
+
+              for (const label of issueResponse.data.labels || []) {
+                const labelName = typeof label === 'string' ? label : label.name;
+
+                if (!labelName) {
+                  continue;
+                }
+
+                syncedLabelsByName.set(labelName.toLowerCase(), labelName);
+              }
+            }
+
+            const labelsToSync = [...syncedLabelsByName.values()];
+
+            if (!labelsToSync.length) {
+              console.log(
+                `No labels were found on the linked issues for pull request #${pullRequestNumber}.`
+              );
+              return;
+            }
+
+            const missingLabels = labelsToSync.filter(
+              (labelName) => !existingPullRequestLabels.has(labelName.toLowerCase())
+            );
+
+            if (!missingLabels.length) {
+              console.log(
+                `Pull request #${pullRequestNumber} already has every label from its linked issues.`
+              );
+              return;
+            }
+
+            await github.rest.issues.addLabels({
+              owner,
+              repo,
+              issue_number: pullRequestNumber,
+              labels: missingLabels
+            });
+
+            console.log(
+              `Added labels to PR #${pullRequestNumber} from linked issues ${issueNumbers.join(', ')}: ${missingLabels.join(', ')}`
+            );
