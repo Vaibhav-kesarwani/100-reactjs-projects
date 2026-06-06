@@ -69,4 +69,14 @@ export const projectItemConfig: ProjectItems[] = [
     techStack: ["React", "Tailwind CSS", "TypeScript"],
     difficulty: "Beginner",
   },
+  {
+    projectName: "Note-Flow",
+    description:
+      "A modern notes management application featuring note creation, editing, deletion, search functionality, and local storage persistence.",
+    projectImage: "note-flow.png",
+    githubLink: "https://github.com/Anurag-3112/Note-Flow",
+    liveLink: "https://note-flow-1.vercel.app/",
+    techStack: ["React", "JavaScript", "CSS", "LocalStorage"],
+    difficulty: "Intermediate",
+  },
 ];
