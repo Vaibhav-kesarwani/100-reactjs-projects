@@ -13,6 +13,21 @@ This carefully curated collection helps you learn and practice frontend developm
 
 ---
 
+## Table of Contents
+- [Part of Open Source Program](#part-of-open-source-program)
+- [About This Repository](#about-this-repository)
+- [Why Build React Projects?](#why-build-react-projects)
+- [How to Use This Repository](#how-to-use-this-repository)
+- [Tech Stack](#tech-stack)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Support & Share](#support--share)
+- [Star History](#star-history)
+- [Start Building Today!](#start-building-today)
+
+---
+
 ## Part of Open Source Program
 
 ### 1. GirlScript Summer of Code (GSSoC'26)
