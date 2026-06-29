@@ -14,11 +14,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 z-50 w-[95%] max-w-6xl -translate-x-1/2
+      className={`fixed top-4 left-1/2 z-50 w-[95%] max-w-5xl -translate-x-1/2
       flex items-center justify-between
       ${open ? "rounded-t-2xl" : "rounded-2xl"} md:rounded-2xl border border-border
       backdrop-blur-md
-      px-6 py-3 shadow-lg`}
+      px-6 md:px py-3 shadow-lg`}
     >
       <Logo />
       <NavItems />
@@ -29,7 +29,7 @@ export default function Navbar() {
           href={"https://github.com/Vaibhav-kesarwani/100-reactjs-projects"}
           target="_blank"
           aria-label="View GitHub repository (opens in new tab)"
-          className="hidden md:block border border-border p-2 rounded-lg"
+          className="hidden ig:block border border-border p-2 rounded-lg"
         >
           <GitHubStarsAnimation
             maxAvatars={3}

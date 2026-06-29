@@ -8,10 +8,7 @@ export default function NavItems() {
   const pathname = usePathname();
 
   return (
-    <ul
-      aria-label="Desktop navigation menu"
-      className="hidden items-center justify-center gap-3 md:flex"
-    >
+    <ul className="hidden md:flex items-center gap-5 lg:gap-7">
       {navbarConfig.items.map((item, index) => {
         const isActive = pathname === item.href;
 
