@@ -15,6 +15,13 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import SearchBar from "./search-bar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const PROJECTS_PER_PAGE = 6;
 
@@ -22,6 +29,7 @@ export default function ProjectGrid() {
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavorites, setShowFavorites] = useState(false);
+  const [difficultyFilter, setDifficultyFilter] = useState("All");
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
@@ -36,7 +44,7 @@ export default function ProjectGrid() {
   // Reset visible count when filters change
   useEffect(() => {
     setVisibleCount(PROJECTS_PER_PAGE);
-  }, [searchQuery, showFavorites]);
+  }, [searchQuery, showFavorites, difficultyFilter]);
 
   const toggleFavorite = (projectName: string) => {
     let updatedFavorites: string[];
@@ -67,9 +75,12 @@ export default function ProjectGrid() {
       const matchesFavorites =
         !showFavorites || favorites.includes(item.projectName);
 
-      return matchesSearch && matchesFavorites;
+      const matchesDifficulty =
+        difficultyFilter === "All" || item.difficulty === difficultyFilter;
+
+      return matchesSearch && matchesFavorites && matchesDifficulty;
     });
-  }, [searchQuery, favorites, showFavorites]);
+  }, [searchQuery, favorites, showFavorites, difficultyFilter]);
 
   const visibleProjects = filteredProjects.slice(0, visibleCount);
   const hasMore = filteredProjects.length > visibleCount;
@@ -117,6 +128,23 @@ export default function ProjectGrid() {
           <FaBookmark aria-hidden="true" />
           {showFavorites ? "Show All" : "Show Favorites"}
         </button>
+
+        <div className="ml-auto">
+          <Select value={difficultyFilter} onValueChange={setDifficultyFilter}>
+            <SelectTrigger
+              className="w-40"
+              aria-label="Filter by difficulty level"
+            >
+              <SelectValue placeholder="Difficulty" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="All">All Levels</SelectItem>
+              <SelectItem value="Beginner">Beginner</SelectItem>
+              <SelectItem value="Intermediate">Intermediate</SelectItem>
+              <SelectItem value="Advanced">Advanced</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       {filteredProjects.length > 0 ? (
