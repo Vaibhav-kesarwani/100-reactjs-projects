@@ -369,7 +369,7 @@ const FluidCursor = () => {
       gl.compileShader(shader);
 
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
-        console.trace(gl.getShaderInfoLog(shader));
+        console.debug(gl.getShaderInfoLog(shader));
 
       return shader;
     }
