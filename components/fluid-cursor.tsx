@@ -331,7 +331,7 @@ const FluidCursor = () => {
       gl.linkProgram(program);
 
       if (!gl.getProgramParameter(program, gl.LINK_STATUS))
-        console.trace(gl.getProgramInfoLog(program));
+        console.debug(gl.getProgramInfoLog(program));
 
       return program;
     }
