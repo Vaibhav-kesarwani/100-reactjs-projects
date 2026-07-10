@@ -990,7 +990,7 @@ const FluidCursor = () => {
     function resizeCanvas() {
       const width = scaleByPixelRatio(canvasEl.clientWidth);
       const height = scaleByPixelRatio(canvasEl.clientHeight);
-      if (canvasEl.width != width || canvasEl.height != height) {
+      if (canvasEl.width !== width || canvasEl.height !== height) {
         canvasEl.width = width;
         canvasEl.height = height;
         return true;
@@ -1227,7 +1227,7 @@ const FluidCursor = () => {
     }
 
     function hashCode(s: string): number {
-      if (s.length == 0) return 0;
+      if (s.length === 0) return 0;
       let hash = 0;
       for (let i = 0; i < s.length; i++) {
         hash = (hash << 5) - hash + s.charCodeAt(i);
