@@ -998,7 +998,6 @@ const FluidCursor = () => {
       return false;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function updateColors(_dt: number) {
       pointers.forEach((p) => {
         p.color = generateColor();
