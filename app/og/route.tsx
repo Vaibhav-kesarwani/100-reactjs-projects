@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 // Use the Edge Runtime for optimal performance
 export const runtime = "edge";
 
-export async function GET() {
+export function GET() {
   return new ImageResponse(
     <div
       style={{
