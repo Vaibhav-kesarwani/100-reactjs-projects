@@ -5,7 +5,7 @@ import { generateMetadata as getMetadata } from "@/config/meta";
 
 export const metadata = getMetadata("/contributors");
 
-export default async function Contributors() {
+export default function Contributors() {
   return (
     <section className="mt-20 relative flex min-h-screen items-center justify-center overflow-hidden px-4 text-center">
       <div className="relative z-10 mx-auto max-w-5xl">
