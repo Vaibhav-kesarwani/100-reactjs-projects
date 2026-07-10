@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -280,6 +279,7 @@ export default function GitHubStarsAnimation({
               }
               whileHover={shouldReduceMotion ? {} : { scale: 1.1, zIndex: 20 }}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt={`${stargazer.login}'s avatar`}
                 className="h-full w-full object-cover"
