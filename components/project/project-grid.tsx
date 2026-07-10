@@ -34,6 +34,7 @@ export default function ProjectGrid() {
   }, []);
 
   // Reset visible count when filters change
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     setVisibleCount(PROJECTS_PER_PAGE);
   }, [searchQuery, showFavorites]);
