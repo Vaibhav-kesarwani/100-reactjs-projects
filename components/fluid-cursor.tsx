@@ -259,7 +259,6 @@ const FluidCursor = () => {
       return status === gl.FRAMEBUFFER_COMPLETE;
     }
 
-    // eslint-disable-next-line react-hooks/unsupported-syntax
     class Material {
       vertexShader: WebGLShader;
       fragmentShaderSource: string;
@@ -303,7 +302,6 @@ const FluidCursor = () => {
       }
     }
 
-    // eslint-disable-next-line react-hooks/unsupported-syntax
     class Program {
       program: WebGLProgram;
       uniforms: UniformMap;
