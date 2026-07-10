@@ -62,9 +62,6 @@ export default function GitHubStarsAnimation({
   // Fetch stargazers and star count
   useEffect(() => {
     if (providedStargazers && providedStarCount !== undefined) {
-      setStargazers(providedStargazers);
-      setStarCount(providedStarCount);
-      setIsLoading(false);
       return;
     }
 
