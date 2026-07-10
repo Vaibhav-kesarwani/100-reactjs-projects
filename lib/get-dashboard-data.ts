@@ -105,11 +105,11 @@ function logRejectedResult(
   }
 }
 
-async function fetchRepository() {
+function fetchRepository() {
   return fetchGitHubJson<GitHubRepository>(`/repos/${REPOSITORY}`);
 }
 
-async function fetchIssues() {
+function fetchIssues() {
   const query = encodeURIComponent(`repo:${REPOSITORY} is:issue state:open`);
 
   return fetchGitHubJson<GitHubSearchResponse<GitHubIssueItem>>(
@@ -117,7 +117,7 @@ async function fetchIssues() {
   );
 }
 
-async function fetchPullRequests() {
+function fetchPullRequests() {
   const query = encodeURIComponent(`repo:${REPOSITORY} is:pr state:open`);
 
   return fetchGitHubJson<GitHubSearchResponse<GitHubPullRequestItem>>(
@@ -125,7 +125,7 @@ async function fetchPullRequests() {
   );
 }
 
-async function fetchContributorsForDashboard() {
+function fetchContributorsForDashboard() {
   return fetchGitHubJson<GitHubContributor[]>(
     `/repos/${REPOSITORY}/contributors`,
   );
