@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { projectConfig } from "@/config/projects";
@@ -20,18 +19,17 @@ const PROJECTS_PER_PAGE = 6;
 
 export default function ProjectGrid() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    try {
+      const stored = localStorage.getItem("favoriteProjects");
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
   const [showFavorites, setShowFavorites] = useState(false);
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_PAGE);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-
-  useEffect(() => {
-    const storedFavorites = localStorage.getItem("favoriteProjects");
-
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
-    }
-  }, []);
 
   // Reset visible count when filters change
   useEffect(() => {
