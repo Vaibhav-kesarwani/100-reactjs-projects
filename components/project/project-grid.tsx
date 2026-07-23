@@ -26,10 +26,13 @@ export default function ProjectGrid() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   useEffect(() => {
-    const storedFavorites = localStorage.getItem("favoriteProjects");
-
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
+    try {
+      const storedFavorites = localStorage.getItem("favoriteProjects");
+      if (storedFavorites) {
+        setFavorites(JSON.parse(storedFavorites));
+      }
+    } catch {
+      console.warn("Failed to parse stored favorites");
     }
   }, []);
 
