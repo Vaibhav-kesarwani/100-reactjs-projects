@@ -30,7 +30,13 @@ export async function getContributors(): Promise<GitHubContributor[]> {
     return lastSuccessfulContributors;
   }
 
-  const data: GitHubContributor[] = await res.json();
+  let data: GitHubContributor[];
+  try {
+    data = await res.json();
+  } catch {
+    console.error("Failed to parse GitHub API response");
+    return lastSuccessfulContributors;
+  }
   lastSuccessfulContributors = data;
   return data;
 }
