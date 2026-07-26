@@ -61,7 +61,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: true, ignored: true, event });
   }
 
-  revalidateTag(DASHBOARD_CACHE_TAG, "max");
+  revalidateTag(DASHBOARD_CACHE_TAG);
   revalidatePath("/dashboard");
 
   return Response.json({ ok: true, revalidated: true, event });
