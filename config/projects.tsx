@@ -1,15 +1,4 @@
-import { projectItemConfig } from "./project-Item";
-
-export interface ProjectItems {
-  projectName: string;
-  description: string;
-  projectImage: string;
-  githubLink: string;
-  liveLink?: string;
-  ytLink?: string;
-  techStack: string[];
-  difficulty: string;
-}
+import { ProjectItems, projectItemConfig } from "./project-Item";
 
 interface Project {
   description: string;
