@@ -1,4 +1,13 @@
-import { ProjectItems } from "./projects";
+export interface ProjectItems {
+  projectName: string;
+  description: string;
+  projectImage: string;
+  githubLink: string;
+  liveLink?: string;
+  ytLink?: string;
+  techStack: string[];
+  difficulty: string;
+}
 
 export const projectItemConfig: ProjectItems[] = [
   {
