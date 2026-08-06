@@ -20,7 +20,7 @@ We welcome improvements, new project additions, UI/UX enhancements, and bug fixe
     - [4. Run the Development Server](#4-run-the-development-server)
   - [Adding a New Project](#adding-a-new-project)
     - [Step 1: Upload Your Project Image](#step-1-upload-your-project-image)
-    - [Step 2: Update `config/project-item.tsx`](#step-2-update-configproject-itemtsx)
+    - [Step 2: Update `config/project-Item.tsx`](#step-2-update-configproject-Itemtsx)
   - [Improving UI/UX](#improving-uiux)
   - [Contribution Guidelines](#contribution-guidelines)
   - [Commit Message Standards](#commit-message-standards)
@@ -106,9 +106,9 @@ Ensure the image:
 
 ---
 
-### Step 2: Update `config/project-item.tsx`
+### Step 2: Update `config/project-Item.tsx`
 
-Add your project details inside the `project-item.tsx` file.
+Add your project details inside the `project-Item.tsx` file.
 
 ```tsx
 {
@@ -122,6 +122,7 @@ Add your project details inside the `project-item.tsx` file.
     difficulty: "Beginner" // Beginner | Intermediate | Advanced
 }
 ```
+
 ### Difficulty Levels
 
 Every project must include a valid `difficulty` field.
@@ -179,7 +180,7 @@ feat: add new weather app project
 fix: resolve layout issue in project card
 docs: update contributing guidelines
 style: improve button styling
-refactor: optimize project-item component
+refactor: optimize project-Item component
 chore: update dependencies
 ```
 
@@ -216,10 +217,10 @@ chore: update dependencies
 
 If you find a bug or want to suggest a feature:
 
-1. Open an issue.
-2. Provide a clear title and description.
-3. Include screenshots or steps to reproduce.
-4. Mention your environment (browser, OS, device).
+1. Open the matching issue form.
+2. Select your contribution program: `General`, `GSSoC 2026`, or `NSoC 2026`.
+3. Fill in the structured fields with a clear problem statement and expected solution.
+4. Include screenshots, references, reproduction steps, and environment details when relevant.
 
 ---
 

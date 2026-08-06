@@ -48,4 +48,33 @@ export const projectItemConfig: ProjectItems[] = [
     techStack: ["React js", "JavaScript", "CSS", "HTML"],
     difficulty: "Intermediate",
   },
+    projectName: "SpeedTap",
+    description:
+      "A fast-paced reaction time game built with React where players click randomly appearing targets before time runs out while tracking scores and improving reflex speed.",
+    projectImage: "speedtap.png",
+    githubLink: "https://github.com/prishsha/speedTap",
+    liveLink: "https://speed-tap-two.vercel.app/",
+    techStack: ["React js", "TypeScript", "CSS", "Vite"],
+    difficulty: "Beginner",
+  },
+  {
+    projectName: "SplitSmart",
+    description:
+      "Split bills equally, by item, or by percentage. Features AI bill parsing, group management, history tracking, and localStorage persistence.",
+    projectImage: "splitsmart.png",
+    githubLink: "https://github.com/ParthBhuptani/splitsmart",
+    liveLink: "https://splitsmart-expense.vercel.app",
+    techStack: ["React js", "Tailwind css", "TypeScript"],
+    difficulty: "Intermediate",
+  },
+  {
+    projectName: "Text Cipher",
+    description:
+      "An interactive text encoder and decoder supporting Base64 and Caesar Shift.",
+    projectImage: "text-cipher.png",
+    githubLink: "https://github.com/Reva2473/Text-Cipher",
+    liveLink: "https://text-cipher.vercel.app/",
+    techStack: ["React", "Tailwind CSS", "TypeScript"],
+    difficulty: "Beginner",
+  },
 ];

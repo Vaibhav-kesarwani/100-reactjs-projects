@@ -1,0 +1,104 @@
+name: Bug Report
+description: Report a reproducible problem in the repository.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug.
+        Please fill out the form with enough detail for maintainers to reproduce and triage the issue.
+
+  - type: markdown
+    attributes:
+      value: |
+        **Formatting note**
+        Do not use markdown headings such as `#`, `##`, or `###` inside any response box.
+        These fields already render with headings in the final issue.
+        Use plain text, bullet points (-), or numbered lists instead(1., 2., 3.).
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: "[ISSUE FORM] Pre-Submission Checks"
+      description: Confirm the following before submitting.
+      options:
+        - label: I have searched the existing issues and confirmed this bug has not been reported already.
+          required: true
+        - label: I am willing to work on this issue if needed.
+          required: false
+
+  - type: dropdown
+    id: contribution_program
+    attributes:
+      label: "[ISSUE FORM] Contribution Program"
+      description: Select the program you are contributing under.
+      options:
+        - General / Not part of a contribution program
+        - GSSoC 2026
+        - NSoC 2026
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: "[ISSUE FORM] Difficulty Level"
+      description: Estimate the difficulty of fixing this issue.
+      options:
+        - Beginner
+        - Intermediate
+        - Advanced
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: "[ISSUE FORM] Current Behavior"
+      description: Describe what is happening right now.
+      placeholder: The page crashes when I click...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: "[ISSUE FORM] Steps to Reproduce"
+      description: Share the exact steps needed to reproduce the bug.
+      placeholder: |
+        1. Go to ...
+        2. Click on ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: "[ISSUE FORM] Expected Behavior"
+      description: Describe what should happen instead.
+      placeholder: The page should...
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: "[ISSUE FORM] Environment"
+      description: Add any relevant environment details.
+      placeholder: Windows 11, Chrome 136, mobile viewport
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "[ISSUE FORM] Screenshots or References"
+      description: Paste screenshot links or any references that help explain the issue.
+      placeholder: Add screenshot links, console output, or related references here.
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "[ISSUE FORM] Additional Context"
+      description: Share anything else that would help triage this bug.
+      placeholder: Additional details...

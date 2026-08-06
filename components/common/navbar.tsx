@@ -28,6 +28,7 @@ export default function Navbar() {
         <Link
           href={"https://github.com/Vaibhav-kesarwani/100-reactjs-projects"}
           target="_blank"
+          aria-label="View GitHub repository (opens in new tab)"
           className="hidden md:block border border-border p-2 rounded-lg"
         >
           <GitHubStarsAnimation
@@ -41,7 +42,9 @@ export default function Navbar() {
         <button
           className="md:hidden"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle Menu"
+          aria-label="Toggle navigation menu"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? (
             <X size={22} className="text-foreground/50" />

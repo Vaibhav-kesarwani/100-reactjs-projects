@@ -15,7 +15,13 @@ This carefully curated collection helps you learn and practice frontend developm
 
 ## Part of Open Source Program
 
-### 1. Nexus Spring of Code (NSoC'26)
+### 1. GirlScript Summer of Code (GSSoC'26)
+
+This repository is proudly a part of **GirlScript Summer of Code (GSSoC'26)**, an open-source initiative that fosters innovation, collaboration, and learning among developers worldwide.
+
+Contributors are welcome to explore, enhance, and contribute to the project as part of this program.
+
+### 2. Nexus Spring of Code (NSoC'26)
 
 This repository is proudly a part of **Nexus Spring of Code (NSoC'26)**, an open-source initiative that fosters innovation, collaboration, and learning among developers worldwide.
 

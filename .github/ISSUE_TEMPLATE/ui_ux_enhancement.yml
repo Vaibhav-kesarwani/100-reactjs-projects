@@ -1,0 +1,94 @@
+name: UI/UX Enhancement
+description: Suggest a user interface or user experience improvement.
+title: "[UI/UX]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a UI or UX improvement.
+        Please describe the current pain point and the improvement you want to see.
+
+  - type: markdown
+    attributes:
+      value: |
+        **Formatting note**
+        Do not use markdown headings such as `#`, `##`, or `###` inside any response box.
+        These fields already render with headings in the final issue.
+        Use plain text, bullet points (-), or numbered lists instead(1., 2., 3.).
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: "[ISSUE FORM] Pre-Submission Checks"
+      description: Confirm the following before submitting.
+      options:
+        - label: I have searched the existing issues and confirmed this enhancement has not been raised already.
+          required: true
+        - label: I am willing to work on this issue if needed.
+          required: false
+
+  - type: dropdown
+    id: contribution_program
+    attributes:
+      label: "[ISSUE FORM] Contribution Program"
+      description: Select the program you are contributing under.
+      options:
+        - General / Not part of a contribution program
+        - GSSoC 2026
+        - NSoC 2026
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: "[ISSUE FORM] Difficulty Level"
+      description: Estimate the implementation difficulty.
+      options:
+        - Beginner
+        - Intermediate
+        - Advanced
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: affected_area
+    attributes:
+      label: "[ISSUE FORM] Affected Page or Component"
+      description: Which page, section, or component should be improved?
+      placeholder: Navbar, hero section, contributors page...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: "[ISSUE FORM] Problem Description"
+      description: What is the current UI/UX problem?
+      placeholder: The current layout feels crowded because...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_solution
+    attributes:
+      label: "[ISSUE FORM] Expected Solution"
+      description: Describe the enhancement you want.
+      placeholder: Improve the spacing, hierarchy, or interaction by...
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "[ISSUE FORM] Screenshots, Mockups, or References"
+      description: Add any visuals or references that clarify the request.
+      placeholder: Add screenshot links, design references, or mockups here.
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "[ISSUE FORM] Additional Context"
+      description: Share anything else maintainers should know.
+      placeholder: Additional details...

@@ -11,7 +11,7 @@ export const siteConfig = {
   name: "100+ Reactjs Projects",
   title: "Reactjs Projects",
   description:
-    "Build real-world applications, master modern tools, and elevate your front-end development skills with hands-on experience.",
+    "Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.",
   url: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
   ogImage: "/meta/hero.png",
   author: {
@@ -39,7 +39,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   "/": {
     title: "100+ Reactjs Projects",
     description:
-      "Build real-world applications, master modern tools, and elevate your front-end development skills with hands-on experience.",
+      "Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.",
     keywords: [
       "100+ Reactjs projects",
       "100 reactjs projects",
@@ -59,7 +59,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   "/projects": {
     title: "100+ Reactjs Projects | Projects",
     description:
-      "Build real-world applications, master modern tools, and elevate your front-end development skills with hands-on experience.",
+      "Build real-world applications, master modern tools, and elevate your frontend development skills with hands-on experience.",
     keywords: [
       "100+ Reactjs projects",
       "100 reactjs projects",
@@ -72,6 +72,24 @@ export const pageMetadata: Record<string, PageMeta> = {
       "Community",
       "nsoc",
       "Nexus Spring of Code",
+      "gssoc",
+      "GirlScript Summer of Code",
+    ],
+    ogImage: "/meta/projects.png",
+    twitterCard: "summary_large_image",
+  },
+
+  "/dashboard": {
+    title: "Contributor Dashboard | 100+ Reactjs Projects",
+    description:
+      "Follow issue activity, pull request progress, contributor leaderboard updates, and contribution workflow from one centralized dashboard.",
+    keywords: [
+      "100+ Reactjs projects dashboard",
+      "GitHub issue tracker",
+      "pull request dashboard",
+      "open source contribution",
+      "contributor leaderboard",
+      "repository activity",
       "gssoc",
       "GirlScript Summer of Code",
     ],

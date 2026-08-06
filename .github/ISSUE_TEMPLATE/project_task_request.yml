@@ -1,0 +1,94 @@
+name: Project/Task Request
+description: Propose a new project idea or a structured task for contributors.
+title: "[Task]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing a new project or contributor task.
+        Please describe the task clearly so maintainers can assess its value and scope.
+
+  - type: markdown
+    attributes:
+      value: |
+        **Formatting note**
+        Do not use markdown headings such as `#`, `##`, or `###` inside any response box.
+        These fields already render with headings in the final issue.
+        Use plain text, bullet points (-), or numbered lists instead(1., 2., 3.).
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: "[ISSUE FORM] Pre-Submission Checks"
+      description: Confirm the following before submitting.
+      options:
+        - label: I have searched the existing issues and confirmed this request has not been raised already.
+          required: true
+        - label: I am willing to work on this issue if needed.
+          required: false
+
+  - type: dropdown
+    id: contribution_program
+    attributes:
+      label: "[ISSUE FORM] Contribution Program"
+      description: Select the program you are contributing under.
+      options:
+        - General / Not part of a contribution program
+        - GSSoC 2026
+        - NSoC 2026
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: "[ISSUE FORM] Difficulty Level"
+      description: Estimate the difficulty of this task or project request.
+      options:
+        - Beginner
+        - Intermediate
+        - Advanced
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: requested_task
+    attributes:
+      label: "[ISSUE FORM] Requested Project or Task"
+      description: Name the project idea or task you want to propose.
+      placeholder: Add a Kanban board app, improve contributor page filters...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: "[ISSUE FORM] Problem Description"
+      description: What problem does this task or project solve?
+      placeholder: This would help contributors learn...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_solution
+    attributes:
+      label: "[ISSUE FORM] Expected Solution or Scope"
+      description: Describe the expected outcome, deliverables, or boundaries.
+      placeholder: The task should include...
+    validations:
+      required: true
+
+  - type: textarea
+    id: resources
+    attributes:
+      label: "[ISSUE FORM] Resources or References"
+      description: Add references, examples, or supporting links if available.
+      placeholder: Reference links, inspiration, or related issues...
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "[ISSUE FORM] Additional Context"
+      description: Share anything else that would help maintainers review this request.
+      placeholder: Additional details...

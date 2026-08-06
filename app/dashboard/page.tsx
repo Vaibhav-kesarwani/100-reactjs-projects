@@ -1,17 +1,11 @@
-export default function Dashboard() {
-  return (
-    <section className="mt-20 relative flex min-h-screen items-center justify-center overflow-hidden px-4 text-center">
-      <div className="relative z-10 mx-auto max-w-5xl">
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-          Dashboard For the Developers
-        </h1>
+import DashboardOverview from "@/components/dashboard/dashboard-overview";
+import { generateMetadata as getMetadata } from "@/config/meta";
+import { getDashboardData } from "@/lib/get-dashboard-data";
 
-        <p className="mt-4 md:mt-6 text-sm md:text-xl text-foreground/60 max-w-2xl mx-auto">
-          Welcome to the central hub of the 100 ReactJS Projects platform.
-          Explore curated projects, track your progress, and discover real-world
-          applications built with React and Next.js.
-        </p>
-      </div>
-    </section>
-  );
+export const metadata = getMetadata("/dashboard");
+
+export default async function Dashboard() {
+  const dashboardData = await getDashboardData();
+
+  return <DashboardOverview data={dashboardData} />;
 }

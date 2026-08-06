@@ -1,60 +1,128 @@
-name: Label new issues with NSoC
+name: Label new issues by contribution program
 
 on:
   issues:
     types: [opened]
 
 jobs:
-  add-gssoc-label:
+  add-program-label:
     runs-on: ubuntu-latest
     permissions:
       issues: write
 
     steps:
-      - name: Ensure label and add to issue
+      - name: Add the matching existing program label to the issue
         uses: actions/github-script@v7
         with:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const issue_number = context.payload.issue.number;
-            
-            const label = "NSoC'26";
-            const color = 'C0F486'; 
-            const description = 'Under Nexus Spring of Code';
-            
-            try {
-              await github.rest.issues.updateLabel({
+            const issueNumber = context.payload.issue.number;
+            const issueTitle = context.payload.issue.title || '';
+            const issueBody = context.payload.issue.body || '';
+            const existingLabelNames = new Set(
+              (context.payload.issue.labels || []).map((label) =>
+                label.name.toLowerCase()
+              )
+            );
+
+            const managedLabelNames = new Set(["gssoc'26", "nsoc'26"]);
+
+            if ([...managedLabelNames].some((labelName) => existingLabelNames.has(labelName))) {
+              console.log('Issue already has a program label. Skipping automatic labeling.');
+              return;
+            }
+
+            const escapeRegex = (value) =>
+              value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+            const getIssueFormValue = (fieldLabels) => {
+              for (const fieldLabel of fieldLabels) {
+                const escapedLabel = escapeRegex(fieldLabel);
+                const regex = new RegExp(
+                  `### ${escapedLabel}\\r?\\n([\\s\\S]*?)(?=\\r?\\n### |$)`,
+                  'i'
+                );
+                const match = issueBody.match(regex);
+
+                if (match) {
+                  return match[1].trim();
+                }
+              }
+
+              return null;
+            };
+
+            const getProgramFromFreeformText = (text) => {
+              const hasGssoc = /\bgssoc(?:\s*'?26|\s*2026)?\b/i.test(text);
+              const hasNsoc = /\b(?:nsoc|nssoc)(?:\s*'?26|\s*2026)?\b/i.test(text);
+
+              if (hasGssoc === hasNsoc) {
+                return null;
+              }
+
+              return hasGssoc ? 'gssoc' : 'nsoc';
+            };
+
+            const contributionProgram = getIssueFormValue([
+              '[ISSUE FORM] Contribution Program',
+              'Contribution Program'
+            ]);
+
+            const labelNameByProgram = {
+              'gssoc 2026': "GSSoC'26",
+              'gssoc': "GSSoC'26",
+              'nsoc 2026': "NSoC'26",
+              'nsoc': "NSoC'26",
+              'nssoc 2026': "NSoC'26",
+              'nssoc': "NSoC'26"
+            };
+
+            const normalizedProgram = contributionProgram
+              ? contributionProgram.trim().toLowerCase()
+              : null;
+
+            let desiredLabelName = null;
+
+            if (normalizedProgram) {
+              desiredLabelName = labelNameByProgram[normalizedProgram] || null;
+            } else {
+              const detectedProgram = getProgramFromFreeformText(`${issueTitle}\n${issueBody}`);
+              desiredLabelName = detectedProgram
+                ? labelNameByProgram[detectedProgram]
+                : null;
+            }
+
+            if (!desiredLabelName) {
+              console.log(
+                `No contribution-program label added for value: ${contributionProgram || 'not found'}`
+              );
+              return;
+            }
+
+            const repoLabels = await github.paginate(
+              github.rest.issues.listLabelsForRepo,
+              {
                 owner,
                 repo,
-                name: label,
-                new_name: label,
-                color,
-                description
-              });
-            } catch (err) {
-              if (err.status === 404) {
-                try {
-                  await github.rest.issues.createLabel({
-                    owner,
-                    repo,
-                    name: label,
-                    color,
-                    description
-                  });
-                } catch (createErr) {
-                  if (createErr.status !== 422) {
-                    throw createErr;
-                  }
-                }
-              } else {
-                throw err;
+                per_page: 100
               }
+            );
+
+            const repoLabel = repoLabels.find(
+              (label) => label.name.toLowerCase() === desiredLabelName.toLowerCase()
+            );
+
+            if (!repoLabel) {
+              console.log(
+                `Expected existing label ${desiredLabelName} was not found in the repository. Skipping automatic labeling.`
+              );
+              return;
             }
-            
+
             await github.rest.issues.addLabels({
               owner,
               repo,
-              issue_number,
-              labels: [label]
+              issue_number: issueNumber,
+              labels: [repoLabel.name]
             });

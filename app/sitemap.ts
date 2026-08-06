@@ -7,7 +7,7 @@ const projects = Array.from({ length: 100 }, (_, i) => ({
 }));
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/projects", "/contributors"].map(
+  const staticRoutes = ["", "/dashboard", "/projects", "/contributors"].map(
     (route) => ({
       url: `${BASE_URL}${route}`,
       lastModified: new Date(),
