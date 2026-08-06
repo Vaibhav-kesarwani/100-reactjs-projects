@@ -40,6 +40,14 @@ export const projectItemConfig: ProjectItems[] = [
     difficulty: "Intermediate",
   },
   {
+    projectName: "CricBrain",
+    description:
+      "A cricket statistics and news app built with React, featuring real-time scores, player profiles, and match schedules.",
+    projectImage: "cricbrain.png",
+    githubLink: "https://github.com/Aarya1402/CricBrain",
+    techStack: ["React js", "JavaScript", "CSS", "HTML"],
+    difficulty: "Intermediate",
+  },
     projectName: "SpeedTap",
     description:
       "A fast-paced reaction time game built with React where players click randomly appearing targets before time runs out while tracking scores and improving reflex speed.",
