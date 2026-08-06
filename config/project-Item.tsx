@@ -32,10 +32,20 @@ export const projectItemConfig: ProjectItems[] = [
   },
   {
     projectName: "Kitchenly",
-    description:"Recipe Manager + Smart Shopping List helps users capture recipes (URL, upload, or manual), standardize ingredients, scale servings, and automatically generate optimized shopping lists grouped by store sections with aggregated quantities—reducing duplicates and making shopping faster and more efficient.",
+    description:
+      "Recipe Manager + Smart Shopping List helps users capture recipes (URL, upload, or manual), standardize ingredients, scale servings, and automatically generate optimized shopping lists grouped by store sections with aggregated quantities—reducing duplicates and making shopping faster and more efficient.",
     projectImage: "kitchenly.png",
     githubLink: "https://github.com/Aarya1402/kitchenly",
-    techStack: ["Next js","Tailwind CSS","PostgreSQL", "Prisma"], 
-    difficulty: "Intermediate"
-},
+    techStack: ["Next js", "Tailwind CSS", "PostgreSQL", "Prisma"],
+    difficulty: "Intermediate",
+  },
+  {
+    projectName: "CricBrain",
+    description:
+      "A cricket statistics and news app built with React, featuring real-time scores, player profiles, and match schedules.",
+    projectImage: "cricbrain.png",
+    githubLink: "https://github.com/Aarya1402/CricBrain",
+    techStack: ["React js", "JavaScript", "CSS", "HTML"],
+    difficulty: "Intermediate",
+  },
 ];
